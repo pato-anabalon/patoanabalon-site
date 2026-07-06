@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "about": "Sobre mí",
+    "experience": "Experiencia",
+    "skills": "Skills",
+    "creative": "Creativo",
+    "contact": "Contacto",
+    "menuOpen": "Menú",
+    "menuClose": "Cerrar"
+  },
+  "hero": {
+    "title": "Patricio Anabalon",
+    "role": "Senior Software Engineer",
+    "tagline": "18+ años construyendo experiencias digitales — con destino a Auckland.",
+    "scrollCta": "Explorar",
+    "tiles": {
+      "tile1": { "label": "Workspace", "hint": "Donde programo" },
+      "tile2": { "label": "Equipo", "hint": "Colaboración" },
+      "tile3": { "label": "Creativo", "hint": "Fuera del código" },
+      "tile4": { "label": "Chile → NZ", "hint": "El viaje" },
+      "tile5": { "label": "Familia", "hint": "Detrás de todo" },
+      "tile6": { "label": "Premios", "hint": "LATAM · Globant" }
+    }
+  },
+  "about": {
+    "heading": "Sobre mí",
+    "bio1": "Soy Senior Software Engineer con más de 18 años de experiencia construyendo productos digitales de alto impacto en industrias como aviación y fintech. Actualmente en LATAM Airlines, lidero el desarrollo front-end de una de las mayores plataformas de e-commerce en Latinoamérica.",
+    "bio2": "Más allá del código, soy creador — trabajo con After Effects, DaVinci Resolve y Premiere para producir contenido audiovisual que combina narrativa con precisión técnica. Creo que el software y el diseño comparten la misma raíz: la intencionalidad.",
+    "bio3": "Me estoy relocalizando a Auckland, Nueva Zelanda, y tengo muchas ganas de llevar mis más de dieciocho años de experiencia en ingeniería a equipos innovadores en NZ.",
+    "yearsLabel": "Años de experiencia",
+    "companiesLabel": "Empresas",
+    "awardsLabel": "Premios"
+  },
+  "experience": {
+    "heading": "Experiencia",
+    "subheading": "Una carrera construida sobre entrega, liderazgo y crecimiento continuo",
+    "presentLabel": "Presente",
+    "scrollHint": "Desliza para explorar →",
+    "trackLabel": "Línea de tiempo",
+    "milestones": {
+      "latamAward": "LATAM Service Leader — reconocido por Safety, Sustainability y valores J.E.T.S.",
+      "globantAward": "Constantly Innovate — reconocimiento anual de toda la compañía en Globant",
+      "startupChile": "Seleccionado para el programa de aceleración Start-Up Chile G19",
+      "yearsCoding": "años entregando código en producción en distintas industrias"
+    },
+    "photos": {
+      "latamCeremony": "LATAM · ceremonia de premiación",
+      "globantTeam": "Globant · retiro de equipo",
+      "minkPitch": "Mink · día de pitch"
+    }
+  },
+  "skills": {
+    "heading": "Skills",
+    "subheading": "Tecnologías y herramientas con las que trabajo",
+    "chapterLabel": "Capítulo",
+    "categories": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "Construyendo interfaces rápidas, accesibles y con carácter — de Next.js y React a Svelte."
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Sistemas server-side, APIs y datos entre Node, Python y .NET."
+      },
+      "cloud": {
+        "title": "Cloud",
+        "description": "Aprovisionamiento y escalado en AWS, GCP y edge modernos con Terraform."
+      },
+      "ai": {
+        "title": "Herramientas IA",
+        "description": "Trabajando con Claude, Cursor y Codex para avanzar más rápido con intención."
+      },
+      "tools": {
+        "title": "Dev Tools",
+        "description": "El kit diario: Git, pipelines CI/CD, testing, tableros de planning y calidad."
+      },
+      "creative": {
+        "title": "Creativo",
+        "description": "Cuando no escribo código: motion graphics, edición de video y diseño visual."
+      }
+    }
+  },
+  "creative": {
+    "heading": "Trabajo Creativo",
+    "subheading": "Producción audiovisual, motion graphics y diseño visual",
+    "description": "Fuera de la ingeniería, creo contenido audiovisual — desde motion graphics hasta producción de video. Uso After Effects, DaVinci Resolve, Adobe Premiere y Photoshop para contar historias a través de imágenes en movimiento.",
+    "viewOnInstagram": "Ver en Instagram"
+  },
+  "contact": {
+    "heading": "Hablemos",
+    "subheading": "Abierto a oportunidades en Auckland, Nueva Zelanda",
+    "description": "Si buscas un ingeniero senior para liderar un equipo, arquitectar un sistema o crear experiencias de usuario excepcionales — me encantaría conectar.",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "Tu email",
+    "messagePlaceholder": "Cuéntame sobre la oportunidad...",
+    "sendButton": "Enviar Mensaje",
+    "sending": "Enviando...",
+    "successMessage": "¡Mensaje enviado! Te responderé a la brevedad.",
+    "errorMessage": "Algo salió mal. Por favor intenta de nuevo o escríbeme directamente.",
+    "or": "O contáctame directamente"
+  },
+  "footer": {
+    "madeWith": "Hecho con",
+    "by": "por Patricio Anabalon",
+    "rights": "Todos los derechos reservados"
+  }
+}

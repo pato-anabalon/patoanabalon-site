@@ -1,0 +1,107 @@
+{
+  "nav": {
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "creative": "Creative",
+    "contact": "Contact",
+    "menuOpen": "Menu",
+    "menuClose": "Close"
+  },
+  "hero": {
+    "title": "Patricio Anabalon",
+    "role": "Senior Software Engineer",
+    "tagline": "18+ years crafting digital experiences — now heading to Auckland.",
+    "scrollCta": "Scroll to explore",
+    "tiles": {
+      "tile1": { "label": "Workspace", "hint": "Where I code" },
+      "tile2": { "label": "Team", "hint": "Collaboration" },
+      "tile3": { "label": "Creative", "hint": "Off-screen work" },
+      "tile4": { "label": "Chile → NZ", "hint": "The journey" },
+      "tile5": { "label": "Family", "hint": "Behind everything" },
+      "tile6": { "label": "Recognition", "hint": "LATAM · Globant" }
+    }
+  },
+  "about": {
+    "heading": "About Me",
+    "bio1": "I'm a Senior Software Engineer with over 18 years of experience building high-impact digital products for industries ranging from aviation to fintech. Currently at LATAM Airlines, I lead front-end development for one of Latin America's largest e-commerce platforms.",
+    "bio2": "Beyond code, I'm a creator — I work with After Effects, DaVinci Resolve, and Premiere to produce audiovisual content that blends storytelling with technical precision. I believe great software and great design share the same root: intentionality.",
+    "bio3": "I'm relocating to Auckland, New Zealand, and excited to bring my decade-and-a-half of engineering experience to innovative teams in NZ.",
+    "yearsLabel": "Years of experience",
+    "companiesLabel": "Companies",
+    "awardsLabel": "Industry awards"
+  },
+  "experience": {
+    "heading": "Experience",
+    "subheading": "A career built on delivery, leadership & continuous growth",
+    "presentLabel": "Present",
+    "scrollHint": "Scroll to explore →",
+    "trackLabel": "Timeline",
+    "milestones": {
+      "latamAward": "LATAM Service Leader — recognized for Safety, Sustainability and J.E.T.S. values",
+      "globantAward": "Constantly Innovate — annual company-wide recognition at Globant",
+      "startupChile": "Selected for Start-Up Chile G19 acceleration programme",
+      "yearsCoding": "years shipping production code across industries"
+    },
+    "photos": {
+      "latamCeremony": "LATAM · award ceremony",
+      "globantTeam": "Globant · team retreat",
+      "minkPitch": "Mink · pitch day"
+    }
+  },
+  "skills": {
+    "heading": "Skills",
+    "subheading": "Technologies and tools I work with",
+    "chapterLabel": "Chapter",
+    "categories": {
+      "frontend": {
+        "title": "Frontend",
+        "description": "Building fast, accessible, delightful interfaces — from Next.js and React to Svelte."
+      },
+      "backend": {
+        "title": "Backend",
+        "description": "Server-side systems, APIs and data across Node, Python and .NET."
+      },
+      "cloud": {
+        "title": "Cloud",
+        "description": "Provisioning and scaling on AWS, GCP and modern edge platforms with Terraform."
+      },
+      "ai": {
+        "title": "AI Tools",
+        "description": "Working alongside Claude, Cursor and Codex to move faster with intent."
+      },
+      "tools": {
+        "title": "Dev Tools",
+        "description": "The daily kit: Git, CI/CD pipelines, testing, planning boards and code quality."
+      },
+      "creative": {
+        "title": "Creative",
+        "description": "When not writing code: motion graphics, video editing and visual design."
+      }
+    }
+  },
+  "creative": {
+    "heading": "Creative Work",
+    "subheading": "Audiovisual production, motion graphics & visual design",
+    "description": "Outside of engineering, I create audiovisual content — from motion graphics to video production. I use After Effects, DaVinci Resolve, Adobe Premiere, and Photoshop to tell stories through moving images.",
+    "viewOnInstagram": "View on Instagram"
+  },
+  "contact": {
+    "heading": "Let's Talk",
+    "subheading": "Open to opportunities in Auckland, New Zealand",
+    "description": "Whether you're looking for a senior engineer to lead a team, architect a system, or craft exceptional user experiences — I'd love to connect.",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Your email",
+    "messagePlaceholder": "Tell me about the opportunity...",
+    "sendButton": "Send Message",
+    "sending": "Sending...",
+    "successMessage": "Message sent! I'll get back to you shortly.",
+    "errorMessage": "Something went wrong. Please try again or reach out directly.",
+    "or": "Or reach me directly"
+  },
+  "footer": {
+    "madeWith": "Made with",
+    "by": "by Patricio Anabalon",
+    "rights": "All rights reserved"
+  }
+}
