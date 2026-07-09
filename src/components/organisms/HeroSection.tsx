@@ -1,16 +1,10 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react'
-import dynamic from 'next/dynamic'
 import { useTranslations } from 'next-intl'
-import { gsap, ScrollTrigger } from '@/lib/animations/gsap'
-import { Icon } from '@/components/atoms'
+import { gsap, ScrollTrigger, SplitText } from '@/lib/animations/gsap'
+import { Icon, VortexBackground } from '@/components/atoms'
 import { TileSkeleton } from '@/components/molecules'
-
-const ParticleField = dynamic(
-  () => import('@/lib/three/ParticleField').then((m) => m.ParticleField),
-  { ssr: false }
-)
 
 const HERO_END_SCALE = 0.36
 // Index maps to grid area t1..t6. Order is layout-driven (not translation-key order):
@@ -37,27 +31,122 @@ export function HeroSection() {
   const heroContentRef = useRef<HTMLDivElement>(null)
   const tilesRef = useRef<HTMLDivElement>(null)
   const scrollIndicatorRef = useRef<HTMLDivElement>(null)
+  const chipRef = useRef<HTMLDivElement>(null)
+  const patricioRef = useRef<HTMLSpanElement>(null)
+  const anabalonRef = useRef<HTMLSpanElement>(null)
+  const taglineRef = useRef<HTMLParagraphElement>(null)
+  const ctasRef = useRef<HTMLDivElement>(null)
+  const nicknameNoteRef = useRef<HTMLParagraphElement>(null)
 
   useEffect(() => {
-    if (!heroContentRef.current) return
+    const chip = chipRef.current
+    const patricio = patricioRef.current
+    const anabalon = anabalonRef.current
+    const tagline = taglineRef.current
+    const ctas = ctasRef.current
+    const nicknameNote = nicknameNoteRef.current
+    if (!chip || !patricio || !anabalon || !tagline || !ctas || !nicknameNote) return
 
-    const elements = heroContentRef.current.querySelectorAll('[data-animate]')
-    const ctx = gsap.context(() => {
-      // Initial hero text stagger reveal
-      gsap.fromTo(
-        elements,
-        { opacity: 0, y: 60 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          stagger: 0.15,
+    const ctaItems = ctas.querySelectorAll<HTMLElement>('button, a')
+    const scrambleChars = '!<>-_/=+*^?#01'
+
+    const split = new SplitText(tagline, { type: 'words' })
+
+    gsap.set(chip, { autoAlpha: 0, scale: 0.9 })
+    gsap.set([patricio, anabalon], { autoAlpha: 0 })
+    gsap.set(split.words, { y: 40, opacity: 0, color: '#00FF66' })
+    gsap.set(ctaItems, { autoAlpha: 0, scale: 0.85, y: 20 })
+    gsap.set(nicknameNote, { autoAlpha: 0, y: 10 })
+
+    let ctx: gsap.Context | undefined
+    let ranIntro = false
+
+    const runIntro = () => {
+      if (ranIntro) return
+      ranIntro = true
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({ delay: 0.1 })
+
+        tl.to(chip, {
+          autoAlpha: 1,
+          scale: 1,
+          duration: 0.55,
           ease: 'power3.out',
-          delay: 0.3,
-        }
-      )
+        })
 
-      // Scroll indicator bob animation
+        // Reveal H1 spans then scramble-decode in parallel
+        tl.set([patricio, anabalon], { autoAlpha: 1 }, '+=0.05')
+        tl.to(
+          patricio,
+          {
+            scrambleText: {
+              text: 'Patricio',
+              chars: scrambleChars,
+              speed: 0.5,
+              revealDelay: 0.15,
+            },
+            duration: 1.0,
+            ease: 'none',
+          },
+          '<'
+        )
+        tl.to(
+          anabalon,
+          {
+            scrambleText: {
+              text: 'Anabalon',
+              chars: scrambleChars,
+              speed: 0.5,
+              revealDelay: 0.35,
+            },
+            duration: 1.1,
+            ease: 'none',
+          },
+          '<'
+        )
+
+        // Tagline words wave in with color shift (gsapify "Wave Color Shift")
+        tl.to(
+          split.words,
+          {
+            y: 0,
+            opacity: 1,
+            color: '#94A3B8',
+            duration: 0.6,
+            stagger: { each: 0.08, from: 'start' },
+            ease: 'sine.out',
+          },
+          '-=0.4'
+        )
+
+        // CTAs spring in with stagger
+        tl.to(
+          ctaItems,
+          {
+            autoAlpha: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'back.out(1.7)',
+          },
+          '-=0.3'
+        )
+
+        // Nickname note fades in last — warm P.S. that ties the domain to the name
+        tl.to(
+          nicknameNote,
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power2.out',
+          },
+          '-=0.2'
+        )
+      }, heroContentRef.current!)
+
+      // Scroll indicator bob — starts after the intro is well underway
       if (scrollIndicatorRef.current) {
         gsap.to(scrollIndicatorRef.current, {
           y: 8,
@@ -65,12 +154,25 @@ export function HeroSection() {
           repeat: -1,
           yoyo: true,
           ease: 'power1.inOut',
-          delay: 1.5,
+          delay: 2.5,
         })
       }
-    }, heroContentRef.current)
+    }
 
-    return () => ctx.revert()
+    const fallbackId = window.setTimeout(runIntro, 3500)
+
+    if (window.__preloaderDone) {
+      runIntro()
+    } else {
+      window.addEventListener('preloader:done', runIntro, { once: true })
+    }
+
+    return () => {
+      window.clearTimeout(fallbackId)
+      window.removeEventListener('preloader:done', runIntro)
+      ctx?.revert()
+      split.revert()
+    }
   }, [])
 
   // Pinned zoom-out transition
@@ -183,8 +285,10 @@ export function HeroSection() {
     }
   }, [])
 
-  const scrollToAbout = () => {
-    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToTiles = () => {
+    if (typeof window === 'undefined') return
+    const y = (sectionRef.current?.offsetTop ?? 0) + window.innerHeight
+    window.scrollTo({ top: y, behavior: 'smooth' })
   }
 
   return (
@@ -225,7 +329,7 @@ export function HeroSection() {
             <div
               key={key}
               data-tile={i}
-              style={{ gridArea: `t${i + 1}` }}
+              style={{ gridArea: `t${i + 1}`, opacity: 0 }}
               className="h-full w-full"
             >
               <TileSkeleton
@@ -248,10 +352,16 @@ export function HeroSection() {
           className="absolute inset-0 z-10 origin-center overflow-hidden will-change-transform"
           style={{ transformOrigin: 'center center' }}
         >
-          {/* Three.js particle background */}
+          {/* Vortex particle background — full-area flow field. */}
           <div className="absolute inset-0" aria-hidden="true">
-            <ParticleField />
-            {/* Radial gradient overlay */}
+            <VortexBackground
+              className="absolute inset-0"
+              position="center"
+              bandHeight="100%"
+              opacity={0.45}
+              colors={['#10B981', '#34D399', '#F59E0B']}
+            />
+            {/* Radial gradient overlay — focuses attention on the name. */}
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_40%,rgba(16,185,129,0.08)_0%,transparent_70%)]" />
           </div>
 
@@ -263,38 +373,48 @@ export function HeroSection() {
             <div className="max-w-5xl mx-auto text-center">
               {/* Pre-title */}
               <div
-                data-animate
-                className="opacity-0 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-border)] bg-[rgba(16,185,129,0.06)] text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest mb-8"
+                ref={chipRef}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[var(--color-border)] bg-[rgba(16,185,129,0.06)] text-[var(--color-accent)] text-xs font-mono uppercase tracking-widest mb-8"
+                style={{ opacity: 0 }}
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
-                Senior Software Engineer
+                {t('chip')}
               </div>
 
               {/* Name */}
-              <h1
-                data-animate
-                className="opacity-0 text-[clamp(3rem,10vw,8rem)] font-bold font-heading leading-none tracking-tight text-[var(--color-text-primary)] mb-6"
-              >
-                Patricio
+              <h1 className="text-[clamp(3rem,10vw,8rem)] font-bold font-heading leading-none tracking-tight text-[var(--color-text-primary)] mb-6">
+                <span
+                  ref={patricioRef}
+                  className="inline-block"
+                  style={{ opacity: 0 }}
+                >
+                  Patricio
+                </span>
                 <br />
-                <span className="text-[var(--color-accent)]">Anabalon</span>
+                <span
+                  ref={anabalonRef}
+                  className="inline-block text-[var(--color-accent)]"
+                  style={{ opacity: 0 }}
+                >
+                  Anabalon
+                </span>
               </h1>
 
               {/* Tagline */}
               <p
-                data-animate
-                className="opacity-0 text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-12 leading-relaxed"
+                ref={taglineRef}
+                className="text-lg md:text-xl text-[var(--color-text-muted)] max-w-2xl mx-auto mb-12 leading-relaxed"
               >
                 {t('tagline')}
               </p>
 
               {/* CTAs */}
               <div
-                data-animate
-                className="opacity-0 flex flex-wrap items-center justify-center gap-4"
+                ref={ctasRef}
+                className="flex flex-wrap items-center justify-center gap-4"
               >
                 <button
-                  onClick={scrollToAbout}
+                  onClick={scrollToTiles}
                   className="px-8 py-4 rounded-full bg-[var(--color-accent)] text-[var(--color-bg-primary)] font-semibold hover:bg-[var(--color-accent-light)] shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] transition-all duration-300"
                 >
                   {t('scrollCta')}
@@ -310,6 +430,15 @@ export function HeroSection() {
                   Contact me
                 </a>
               </div>
+
+              {/* Nickname note — warm reveal that ties the domain to the name */}
+              <p
+                ref={nicknameNoteRef}
+                className="mt-10 text-[11px] font-mono uppercase tracking-[0.2em] text-[var(--color-text-muted)]"
+                style={{ opacity: 0 }}
+              >
+                {t('nicknameNote')}
+              </p>
             </div>
           </div>
 
@@ -318,7 +447,7 @@ export function HeroSection() {
             ref={scrollIndicatorRef}
             data-testid="hero-scroll-indicator"
             className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[var(--color-text-muted)] cursor-pointer group hover:text-[var(--color-accent)] transition-colors duration-300"
-            onClick={scrollToAbout}
+            onClick={scrollToTiles}
           >
             <span className="text-xs font-mono uppercase tracking-widest">
               {t('scrollCta')}

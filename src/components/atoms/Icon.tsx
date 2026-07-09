@@ -6,12 +6,14 @@ type IconName =
   | 'twitter'
   | 'whatsapp'
   | 'arrow-down'
+  | 'arrow-left'
   | 'arrow-right'
   | 'menu'
   | 'close'
   | 'external-link'
   | 'mail'
   | 'globe'
+  | 'shuffle'
 
 interface IconProps {
   name: IconName
@@ -40,6 +42,12 @@ const icons: Record<IconName, React.ReactNode> = {
     <>
       <line x1="12" y1="5" x2="12" y2="19" />
       <polyline points="19 12 12 19 5 12" />
+    </>
+  ),
+  'arrow-left': (
+    <>
+      <line x1="19" y1="12" x2="5" y2="12" />
+      <polyline points="12 19 5 12 12 5" />
     </>
   ),
   'arrow-right': (
@@ -79,6 +87,15 @@ const icons: Record<IconName, React.ReactNode> = {
       <circle cx="12" cy="12" r="10" />
       <line x1="2" y1="12" x2="22" y2="12" />
       <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </>
+  ),
+  shuffle: (
+    <>
+      <polyline points="16 3 21 3 21 8" />
+      <line x1="4" y1="20" x2="21" y2="3" />
+      <polyline points="21 16 21 21 16 21" />
+      <line x1="15" y1="15" x2="21" y2="21" />
+      <line x1="4" y1="4" x2="9" y2="9" />
     </>
   ),
 }

@@ -9,7 +9,18 @@ export interface Experience {
 
 export interface Skill {
   name: string
-  category: 'frontend' | 'backend' | 'cloud' | 'ai' | 'tools' | 'creative'
+  category:
+    | 'frontend'
+    | 'design'
+    | 'backend'
+    | 'database'
+    | 'cloud'
+    | 'ai'
+    | 'testing'
+    | 'devops'
+    | 'observability'
+    | 'tools'
+    | 'creative'
 }
 
 export interface SocialLink {
@@ -34,3 +45,12 @@ export interface Award {
 }
 
 export type Locale = 'en' | 'es'
+
+declare global {
+  interface Window {
+    __preloaderDone?: boolean
+  }
+  interface WindowEventMap {
+    'preloader:done': CustomEvent
+  }
+}

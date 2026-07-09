@@ -82,6 +82,17 @@ export function FullscreenMenu({
       gradient: "from-purple-500/40 via-emerald-500/30 to-slate-900",
     },
     {
+      id: "offscreen",
+      href: "#offscreen",
+      label: t("offScreen"),
+      caption:
+        locale === "es"
+          ? "Vida entre commits"
+          : "Life between commits",
+      visualLabel: "OFF-SCREEN",
+      gradient: "from-amber-500/30 via-emerald-500/30 to-slate-900",
+    },
+    {
       id: "contact",
       href: "#contact",
       label: t("contact"),
@@ -105,8 +116,13 @@ export function FullscreenMenu({
 
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      // Show container
-      gsap.set(container, { autoAlpha: 1, pointerEvents: "auto" });
+      // Container fades in — no more instant background snap
+      gsap.set(container, { visibility: "visible", pointerEvents: "auto" });
+      gsap.fromTo(
+        container,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.35, ease: "power2.out" }
+      );
 
       // Left panel slide down from top
       if (leftPanel) {
@@ -160,7 +176,7 @@ export function FullscreenMenu({
       }
     } else {
       document.body.style.overflow = "";
-      // Exit
+      // Exit: panels slide out; container fades out on the tail end
       if (leftPanel && rightPanel) {
         gsap.to(leftPanel, {
           yPercent: -100,
@@ -171,6 +187,12 @@ export function FullscreenMenu({
           yPercent: 100,
           duration: 0.7,
           ease: "power4.inOut",
+        });
+        gsap.to(container, {
+          opacity: 0,
+          duration: 0.35,
+          delay: 0.4,
+          ease: "power2.in",
           onComplete: () => {
             gsap.set(container, { autoAlpha: 0, pointerEvents: "none" });
           },
@@ -209,7 +231,7 @@ export function FullscreenMenu({
     <div
       data-testid="fullscreen-menu"
       ref={containerRef}
-      className="fixed inset-0 z-40 p-8 bg-[var(--color-bg-primary)] invisible opacity-0 pointer-events-none"
+      className="fixed inset-0 z-40 pt-20 sm:pt-24 px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8 bg-[var(--color-bg-primary)] invisible opacity-0 pointer-events-none"
       aria-hidden={!isOpen}
       role="dialog"
       aria-modal={isOpen}
@@ -294,7 +316,7 @@ export function FullscreenMenu({
                 transform: "rotate(180deg)",
               }}
             >
-              Patricio Anabalon · {tHero("role")}
+              Pato Anabalon · {tHero("role")}
             </p>
           </div>
         </div>
@@ -306,7 +328,7 @@ export function FullscreenMenu({
           className="relative flex-1 bg-[var(--color-bg-primary)] flex flex-col overflow-hidden"
         >
           {/* Top mini header inside panel */}
-          <div className="px-6 sm:px-10 lg:px-16 pt-24 pb-2">
+          <div className="px-6 sm:px-10 lg:px-16 pt-8 lg:pt-12 pb-2">
             <p className="text-xs font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
               {locale === "es" ? "Navegación" : "Navigation"} — {items.length}
             </p>

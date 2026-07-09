@@ -1,9 +1,20 @@
 {
+  "preloader": {
+    "bootingLabel": "Booting",
+    "steps": {
+      "init": "init hero",
+      "fonts": "load fonts",
+      "vortex": "compile vortex",
+      "tiles": "mount tiles",
+      "ready": "ready"
+    }
+  },
   "nav": {
     "about": "About",
     "experience": "Experience",
     "skills": "Skills",
     "creative": "Creative",
+    "offScreen": "Off-Screen",
     "contact": "Contact",
     "menuOpen": "Menu",
     "menuClose": "Close"
@@ -11,22 +22,24 @@
   "hero": {
     "title": "Patricio Anabalon",
     "role": "Senior Software Engineer",
-    "tagline": "18+ years crafting digital experiences — now heading to Auckland.",
+    "chip": "Hi, I'm Pato",
+    "tagline": "18+ years crafting digital experiences — with Auckland on the horizon.",
+    "nicknameNote": "friends call me pato · patoanabalon.dev",
     "scrollCta": "Scroll to explore",
     "tiles": {
       "tile1": { "label": "Workspace", "hint": "Where I code" },
       "tile2": { "label": "Team", "hint": "Collaboration" },
       "tile3": { "label": "Creative", "hint": "Off-screen work" },
-      "tile4": { "label": "Chile → NZ", "hint": "The journey" },
+      "tile4": { "label": "Chile → NZ", "hint": "The next chapter" },
       "tile5": { "label": "Family", "hint": "Behind everything" },
       "tile6": { "label": "Recognition", "hint": "LATAM · Globant" }
     }
   },
   "about": {
     "heading": "About Me",
-    "bio1": "I'm a Senior Software Engineer with over 18 years of experience building high-impact digital products for industries ranging from aviation to fintech. Currently at LATAM Airlines, I lead front-end development for one of Latin America's largest e-commerce platforms.",
-    "bio2": "Beyond code, I'm a creator — I work with After Effects, DaVinci Resolve, and Premiere to produce audiovisual content that blends storytelling with technical precision. I believe great software and great design share the same root: intentionality.",
-    "bio3": "I'm relocating to Auckland, New Zealand, and excited to bring my decade-and-a-half of engineering experience to innovative teams in NZ.",
+    "bio1": "It was 1996. I was 12 when I met my first computer — and fell for it instantly. Not long after, I broke it trying to make it faster. Almost three decades on, that same obsession still drives me: making complicated things feel effortless. Today it takes the shape of an 18-year career as a Senior Software Engineer across banking, real estate, and aviation.",
+    "bio2": "Now I'm at LATAM Airlines, working on one of Latin America's largest e-commerce platforms. In an IT organisation of ~400 engineers I'm the person teammates come to when the code needs to be right — not just shipped. In 2025 I received LATAM's Service Leaders award, which quietly confirms what I've always believed: you can lead without giving up the keyboard.",
+    "bio3": "What's next? Ideally Auckland — I spent late 2025 there studying English at NZLC and fell completely for the city, its people, and its culture. I'm looking for a company willing to sponsor a work visa (my immigration advisor makes that part painless). Conversations with teams elsewhere are also welcome. If you value craft as much as outcomes, let's talk.",
     "yearsLabel": "Years of experience",
     "companiesLabel": "Companies",
     "awardsLabel": "Industry awards"
@@ -56,11 +69,19 @@
     "categories": {
       "frontend": {
         "title": "Frontend",
-        "description": "Building fast, accessible, delightful interfaces — from Next.js and React to Svelte."
+        "description": "Framework fluency across Next.js, React, Svelte and Vue, in TypeScript and JavaScript."
+      },
+      "design": {
+        "title": "Design & UI",
+        "description": "Styling, design systems and accessibility — Tailwind, Material UI, Figma, A11y and i18n."
       },
       "backend": {
         "title": "Backend",
-        "description": "Server-side systems, APIs and data across Node, Python and .NET."
+        "description": "Server-side systems, APIs and business logic across Node, Python, .NET and PHP."
+      },
+      "database": {
+        "title": "Database",
+        "description": "Relational and NoSQL stores — PostgreSQL, MongoDB, SQL Server and MySQL."
       },
       "cloud": {
         "title": "Cloud",
@@ -70,13 +91,25 @@
         "title": "AI Tools",
         "description": "Working alongside Claude, Cursor and Codex to move faster with intent."
       },
+      "testing": {
+        "title": "Testing",
+        "description": "Unit, component and end-to-end coverage with Jest, RTL, Cypress, Playwright and WebdriverIO."
+      },
+      "devops": {
+        "title": "DevOps",
+        "description": "Version control and delivery pipelines — Git platforms, GitHub Actions, CircleCI, Jenkins and Heroku."
+      },
+      "observability": {
+        "title": "Observability & APIs",
+        "description": "Metrics, analytics, docs and integrations — Grafana, Dynatrace, Looker, Swagger, SendGrid, Slack API and ABSmartly."
+      },
       "tools": {
         "title": "Dev Tools",
-        "description": "The daily kit: Git, CI/CD pipelines, testing, planning boards and code quality."
+        "description": "Code quality, planning boards, agile methods and platform integrations that keep teams shipping."
       },
       "creative": {
         "title": "Creative",
-        "description": "When not writing code: motion graphics, video editing and visual design."
+        "description": "When not writing code: motion graphics, video editing, visual and technical design."
       }
     }
   },
@@ -84,7 +117,60 @@
     "heading": "Creative Work",
     "subheading": "Audiovisual production, motion graphics & visual design",
     "description": "Outside of engineering, I create audiovisual content — from motion graphics to video production. I use After Effects, DaVinci Resolve, Adobe Premiere, and Photoshop to tell stories through moving images.",
-    "viewOnInstagram": "View on Instagram"
+    "viewOnInstagram": "View on Instagram",
+    "featuredWork": "Featured work",
+    "playVideo": "Play video",
+    "videos": {
+      "genoPromo": {
+        "title": "Geno — Promo",
+        "description": "Product launch piece produced for Geno."
+      },
+      "chileGlobantRecruiting": {
+        "title": "Chile · Globant Recruiting",
+        "description": "Recruiting campaign for Globant Chile."
+      },
+      "globantTogether2022": {
+        "title": "Globant Together 2022",
+        "description": "Annual internal event, 2022 edition."
+      },
+      "afterCulturalGlobant2022": {
+        "title": "After Cultural · Globant 2022",
+        "description": "Highlights from the Globant cultural celebration."
+      },
+      "globantTogether2021": {
+        "title": "Globant Together 2021",
+        "description": "Annual internal event, 2021 edition."
+      },
+      "weAreGlobersCelebration": {
+        "title": "We Are Globers · Celebration",
+        "description": "Company-wide celebration piece."
+      }
+    }
+  },
+  "offScreen": {
+    "heading": "Off-Screen",
+    "subheading": "This is my life between commits — family, teams, travels and the moments that don't fit in a CV.",
+    "shuffleLabel": "Shuffle memories",
+    "captions": {
+      "latamAwardsCeremony": "LATAM Awards Ceremony",
+      "rioDeJaneiro": "Rio de Janeiro",
+      "teamLatam": "LATAM Team",
+      "portrait": "Portrait",
+      "globant": "Globant",
+      "easterIsland": "Easter Island",
+      "startUpChile": "Start-Up Chile",
+      "disneyWorld": "Walt Disney World",
+      "globantAwards": "Globant Awards",
+      "recife": "Recife",
+      "saltoElLeonWaterfall": "El León Waterfall",
+      "rapelLake": "Rapel Lake",
+      "sunriseInAuckland": "Sunrise in Auckland",
+      "workspace": "Workspace",
+      "christmas": "Christmas",
+      "auckland": "Auckland",
+      "independenceDay": "Independence Day",
+      "familyDay": "Family Day"
+    }
   },
   "contact": {
     "heading": "Let's Talk",
@@ -97,11 +183,19 @@
     "sending": "Sending...",
     "successMessage": "Message sent! I'll get back to you shortly.",
     "errorMessage": "Something went wrong. Please try again or reach out directly.",
-    "or": "Or reach me directly"
-  },
-  "footer": {
-    "madeWith": "Made with",
-    "by": "by Patricio Anabalon",
-    "rights": "All rights reserved"
+    "or": "Or reach me directly",
+    "signOff": "— Pato",
+    "navigate": "Navigate",
+    "follow": "Follow",
+    "companiesLabel": "Companies I've built at",
+    "openToWork": "Open to work",
+    "madeWith": "Made with ♥ by Pato Anabalon",
+    "rights": "All rights reserved",
+    "errors": {
+      "invalidEmail": "Please enter a valid email address",
+      "invalidChars": "Invalid characters detected. Please remove any HTML or script content."
+    },
+    "counter": "characters",
+    "successReload": "Refresh the page if you'd like to send another message."
   }
 }

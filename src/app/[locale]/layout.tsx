@@ -25,10 +25,12 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Patricio Anabalon — Senior Software Engineer',
+  title: 'Patricio "Pato" Anabalon — Senior Software Engineer',
   description:
-    'Senior Software Engineer with 18+ years of experience. Specialising in Next.js, React, TypeScript and scalable web architectures. Based in Santiago, heading to Auckland, NZ.',
+    'Senior Software Engineer with 18+ years of experience. Specialising in Next.js, React, TypeScript and scalable web architectures. Based in Santiago, with Auckland, NZ on the horizon.',
   keywords: [
+    'Pato Anabalon',
+    'Patricio Anabalon',
     'Software Engineer',
     'Senior Developer',
     'Next.js',
@@ -40,8 +42,8 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Patricio Anabalon' }],
   openGraph: {
-    title: 'Patricio Anabalon — Senior Software Engineer',
-    description: '18+ years crafting digital experiences. Available in Auckland, NZ.',
+    title: 'Patricio "Pato" Anabalon — Senior Software Engineer',
+    description: '18+ years crafting digital experiences. Aiming for Auckland, NZ.',
     type: 'website',
     locale: 'en_US',
   },

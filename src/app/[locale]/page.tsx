@@ -6,8 +6,8 @@ import {
   ExperienceSection,
   SkillsSection,
   CreativeSection,
+  OffScreenSection,
   ContactSection,
-  Footer,
 } from '@/components/organisms'
 
 export default function HomePage() {
@@ -20,9 +20,9 @@ export default function HomePage() {
         <ExperienceSection />
         <SkillsSection />
         <CreativeSection />
+        <OffScreenSection />
         <ContactSection />
       </main>
-      <Footer />
     </MainLayout>
   )
 }

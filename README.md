@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# patoanabalon.dev
 
-## Getting Started
+Personal portfolio site for **Pato Anabalon** — Senior Software Engineer, ~18 years shipping software across banking, real estate and aviation. Currently at LATAM Airlines, aiming for Auckland, New Zealand.
 
-First, run the development server:
+Live: [patoanabalon.dev](https://patoanabalon.dev) *(coming soon)*
+
+---
+
+## What's inside
+
+A 7-section single-page site with heavy motion design, bilingual (EN/ES), and a bento-style photo gallery with hand-curated sets.
+
+| # | Section | Highlights |
+|---|---|---|
+| 01 | **Hero** | Boot-terminal preloader → scramble decode of the name → 6-tile grid revealed on scroll. Three.js vortex particles. |
+| 02 | **About** | Line-mask reveal on H2, word-blur bios, clip-path portrait reveal, animated "→" arrow between Santiago and Auckland. |
+| 03 | **Experience** | Pinned horizontal scroll track. Company cards, milestones (with scrambling year texts) and photo tiles enter cinematically as you scroll. |
+| 04 | **Skills** | Pinned deck of 11 categories with crossfade. Skill cards enter with a 3D door-swing rotation (rotationY 90° → 0°). |
+| 05 | **Creative** | Audiovisual work — motion graphics, video edits from Globant/LATAM years. |
+| 06 | **Off-Screen** | Bento grid of 15 curated photos, 4 different sets cycled by a shuffle button, fullscreen lightbox modal. sessionStorage-persisted. |
+| 07 | **Let's Talk** | Big typographic finale, navigate/follow columns, contact form with validation + injection guard + animated char counter, companies row (LATAM, Globant, Amicar, Mink, Indexa), emerald accent bottom bar. |
+
+---
+
+## Stack
+
+- **[Next.js 16](https://nextjs.org)** (App Router, Turbopack) + **React 19**
+- **TypeScript**, **Tailwind CSS v4**
+- **GSAP 3.15** with Club plugins (`SplitText`, `ScrambleTextPlugin`, `ScrollTrigger`)
+- **Three.js** for the hero vortex + particle fields
+- **Lenis** for smooth scrolling
+- **next-intl** for EN/ES localization
+
+## Architecture
+
+Atomic Design — everything lives under `src/components/{atoms,molecules,organisms,templates}`. Every component has a `data-testid`.
+
+- `atoms/` — Button, Icon, SocialLink, VortexBackground, TopographicLines, Preloader
+- `molecules/` — CompanyCard, MilestoneCard, MenuItem, SkillCard, Lightbox, TileSkeleton, StatCounter
+- `organisms/` — one file per section (Hero, About, Experience, Skills, Creative, OffScreen, Contact) + Navbar + FullscreenMenu
+- `templates/` — MainLayout (Lenis + Preloader wiring)
+
+Content is separated from components:
+- `src/lib/data/` — CV, skills, experience track, off-screen sets, social links
+- `messages/{en,es}.json` — all copy through next-intl
+
+---
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The dev server uses **Turbopack**. First cold build takes ~2s, HMR is instant.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Available scripts:
+- `npm run dev` — dev server with hot reload
+- `npm run build` — production build
+- `npm run start` — serve production build
+- `npm run lint` — ESLint
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Adding content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**A new photo to Off-Screen bento:**
+1. Drop the file in `public/images/gallery/`
+2. Edit `src/lib/data/offScreenSets.ts` — replace an existing entry in one of the 4 sets. Each entry is a tuple `[filename, labelKey?, year?]`.
+3. If it's a new `labelKey`, add the caption under `offScreen.captions.<key>` in both `messages/en.json` and `messages/es.json`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**A new translation:**
+Every user-facing string lives under a namespaced key in `messages/en.json`. Mirror the key structure in `messages/es.json`. The site auto-picks the locale from the URL segment (`/en/...` or `/es/...`).
 
-## Deploy on Vercel
+**A new section:**
+1. Create `src/components/organisms/NewSection.tsx`
+2. Export it from `src/components/organisms/index.ts`
+3. Add its i18n block to both `messages/*.json`
+4. Insert into the `main` in `src/app/[locale]/page.tsx`
+5. Add to `SECTION_IDS` in `Navbar.tsx` so `useActiveSection` tracks it
+6. Add a nav item to `FullscreenMenu.tsx` and to `NAV_SECTIONS` in `ContactSection.tsx`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Deployed on **Vercel** — every push to `main` builds and ships.
+
+Domain `patoanabalon.dev` will be pointed at the Vercel deployment once the DNS is set up.
+
+---
+
+## Contact
+
+Hiring? Want to chat about the code?
+
+- Email: [pato.anabalon@gmail.com](mailto:pato.anabalon@gmail.com)
+- LinkedIn: [patricioanabalon](https://www.linkedin.com/in/patricioanabalon/)
+- Instagram: [@pato.anabalon](https://www.instagram.com/pato.anabalon)
+- X: [@pato_anabalon](https://x.com/pato_anabalon)
+
+Built by Pato — everyone calls me Pato even though the passport says Patricio.

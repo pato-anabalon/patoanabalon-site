@@ -8,7 +8,7 @@ import { FullscreenMenu } from './FullscreenMenu'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { gsap } from '@/lib/animations/gsap'
 
-const SECTION_IDS = ['hero', 'about', 'experience', 'skills', 'creative', 'contact']
+const SECTION_IDS = ['hero', 'about', 'experience', 'skills', 'creative', 'offscreen', 'contact']
 
 export function Navbar() {
   const t = useTranslations('nav')
@@ -75,7 +75,7 @@ export function Navbar() {
               : 'py-6 bg-transparent'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <nav className="w-full px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 flex items-center justify-between">
           {/* Logo */}
           <div ref={logoRef} className="opacity-0">
             <a
@@ -83,7 +83,7 @@ export function Navbar() {
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
               data-testid="navbar-logo"
               className="relative group flex items-center gap-3"
-              aria-label="Patricio Anabalon"
+              aria-label="Pato Anabalon"
             >
               <div className="relative w-10 h-10 rounded-xl bg-[var(--color-accent)] flex items-center justify-center font-bold text-[var(--color-bg-primary)] text-sm font-heading tracking-tight group-hover:scale-110 transition-transform duration-500 overflow-hidden">
                 <span className="relative z-10">PA</span>
@@ -94,7 +94,7 @@ export function Navbar() {
                 />
               </div>
               <span className="hidden md:flex flex-col leading-tight">
-                <span className="text-sm font-semibold text-[var(--color-text-primary)]">Patricio Anabalon</span>
+                <span className="text-sm font-semibold text-[var(--color-text-primary)]">Pato Anabalon</span>
                 <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
                   {locale === 'es' ? 'Ingeniero de Software' : 'Software Engineer'}
                 </span>

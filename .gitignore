@@ -42,3 +42,6 @@ next-env.d.ts
 
 # CV document (local reference only)
 *.docx
+
+# Local source videos (hosted on Mux — see src/lib/data/creativeVideos.ts)
+/public/videos/creative-work/

@@ -25,7 +25,10 @@ export function MilestoneCard({ slug, big, year, text }: MilestoneCardProps) {
       </p>
 
       {/* Big statement */}
-      <p className="text-[3.5rem] leading-[0.95] font-heading font-bold text-[var(--color-accent)] tracking-tight break-words">
+      <p
+        data-milestone-big
+        className="text-[3.5rem] leading-[0.95] font-heading font-bold text-[var(--color-accent)] tracking-tight break-words"
+      >
         {big}
       </p>
 

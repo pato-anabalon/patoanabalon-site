@@ -3,13 +3,15 @@
 import React, { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap } from '@/lib/animations/gsap'
-import { Tag } from '@/components/atoms'
+import { VideoCard } from '@/components/molecules'
+import { creativeVideos } from '@/lib/data/creativeVideos'
+import { skillIcons } from '@/lib/data/skillIcons'
 
 const creativeTools = [
-  { name: 'After Effects', icon: '🎬', description: 'Motion graphics & visual effects' },
-  { name: 'DaVinci Resolve', icon: '🎞️', description: 'Color grading & video editing' },
-  { name: 'Adobe Premiere', icon: '🎥', description: 'Professional video production' },
-  { name: 'Photoshop', icon: '🖼️', description: 'Image editing & compositing' },
+  { name: 'After Effects', description: 'Motion graphics & visual effects' },
+  { name: 'DaVinci Resolve', description: 'Color grading & video editing' },
+  { name: 'Adobe Premiere', description: 'Professional video production' },
+  { name: 'Photoshop', description: 'Image editing & compositing' },
 ]
 
 export function CreativeSection() {
@@ -99,43 +101,47 @@ export function CreativeSection() {
 
           {/* Right: tool cards */}
           <div className="grid grid-cols-2 gap-4">
-            {creativeTools.map((tool) => (
-              <div
-                key={tool.name}
-                data-parallax
-                className="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-accent)] hover:bg-[rgba(16,185,129,0.05)] transition-all duration-300 group cursor-default"
-                data-testid={`creative-tool-${tool.name.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
-                  {tool.icon}
+            {creativeTools.map((tool) => {
+              const iconConfig = skillIcons[tool.name]
+              const ToolIcon = iconConfig?.Icon
+              return (
+                <div
+                  key={tool.name}
+                  data-parallax
+                  className="relative overflow-hidden p-6 rounded-2xl border border-[var(--color-border)] bg-gradient-to-br from-[rgba(30,41,59,0.6)] via-[var(--color-bg-secondary)] to-[rgba(16,185,129,0.05)] backdrop-blur-sm hover:border-[var(--color-accent)] hover:to-[rgba(16,185,129,0.12)] transition-all duration-300 group cursor-default"
+                  data-testid={`creative-tool-${tool.name.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  <div
+                    className="flex-shrink-0 inline-flex items-center justify-center w-11 h-11 rounded-xl bg-[rgba(15,23,42,0.85)] border border-white/[0.06] mb-4 transition-transform duration-300 group-hover:scale-110"
+                    aria-hidden="true"
+                  >
+                    {ToolIcon && <ToolIcon size={22} color={iconConfig.color} />}
+                  </div>
+                  <h3 className="text-sm font-semibold text-[var(--color-text-primary)] mb-1">
+                    {tool.name}
+                  </h3>
+                  <p className="text-xs text-[var(--color-text-muted)]">
+                    {tool.description}
+                  </p>
                 </div>
-                <h3 className="text-sm font-semibold text-[var(--color-text-primary)] mb-1">
-                  {tool.name}
-                </h3>
-                <p className="text-xs text-[var(--color-text-muted)]">
-                  {tool.description}
-                </p>
-              </div>
-            ))}
+              )
+            })}
           </div>
         </div>
 
-        {/* Work samples placeholder grid */}
+        {/* Work samples */}
         <div className="mt-20">
           <p data-reveal className="text-xs font-mono text-[var(--color-text-muted)] uppercase tracking-widest mb-8 text-center">
-            Featured work — coming soon
+            {t('featuredWork')}
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                data-parallax
-                className="aspect-square rounded-2xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex items-center justify-center hover:border-[var(--color-accent)] transition-colors duration-300 group"
-                data-testid={`creative-media-placeholder-${i}`}
-              >
-                <Tag variant="muted" className="group-hover:text-[var(--color-accent)]">
-                  Media {i}
-                </Tag>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {creativeVideos.map((video) => (
+              <div key={video.slug} data-parallax>
+                <VideoCard
+                  slug={video.slug}
+                  playbackId={video.playbackId}
+                  aspectRatio={video.aspectRatio}
+                />
               </div>
             ))}
           </div>

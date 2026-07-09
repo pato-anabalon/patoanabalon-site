@@ -2,11 +2,18 @@
 
 import React, { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
-import { gsap, ScrollTrigger } from '@/lib/animations/gsap'
+import { gsap, SplitText } from '@/lib/animations/gsap'
 import { CompanyCard, MilestoneCard, TileSkeleton } from '@/components/molecules'
 import { experiences, companyLogos } from '@/lib/data/cv'
 import { trackItems } from '@/lib/data/experienceTrack'
 import type { Experience } from '@/types'
+
+// Photo tiles in the track — files live in public/images/experience/
+const TRACK_PHOTOS: Record<string, string> = {
+  latamCeremony: '/images/experience/award-latam.jpg',
+  globantTeam: '/images/experience/award-globant.jpeg',
+  minkPitch: '/images/experience/pitch-day.png',
+}
 
 export function ExperienceSection() {
   const t = useTranslations('experience')
@@ -22,28 +29,58 @@ export function ExperienceSection() {
     const section = sectionRef.current
     const track = trackRef.current
     const progress = progressRef.current
+    const label = section.querySelector<HTMLElement>('[data-exp-label]')
+    const heading = section.querySelector<HTMLElement>('[data-exp-heading]')
+    const sub = section.querySelector<HTMLElement>('[data-exp-sub]')
+
+    let splitHeading: SplitText | undefined
+    let splitSub: SplitText | undefined
+
+    const scrambleChars = '!<>-_/=+*^?#01'
 
     const ctx = gsap.context(() => {
-      // Header entrance
-      gsap.fromTo(
-        headerRef.current!.querySelectorAll('[data-reveal]'),
-        { opacity: 0, y: 30 },
-        {
+      // ── Header entrance ────────────────────────────────────────
+      if (label) {
+        const originalLabel = label.textContent ?? ''
+        gsap.to(label, {
+          scrambleText: { text: originalLabel, chars: scrambleChars, speed: 0.5 },
+          duration: 0.7,
+          ease: 'none',
+          scrollTrigger: { trigger: section, start: 'top 75%', once: true },
+        })
+      }
+
+      // H2: chars flip in 3D (rotationX -60 → 0) with back.out easing
+      if (heading) {
+        gsap.set(heading, { perspective: 400 })
+        splitHeading = new SplitText(heading, { type: 'chars' })
+        gsap.set(splitHeading.chars, { rotationX: -60, opacity: 0 })
+        gsap.to(splitHeading.chars, {
+          rotationX: 0,
+          opacity: 1,
+          duration: 0.7,
+          stagger: 0.03,
+          ease: 'back.out(1.4)',
+          scrollTrigger: { trigger: heading, start: 'top 80%', once: true },
+        })
+      }
+
+      // Subheading: word wave with blur
+      if (sub) {
+        splitSub = new SplitText(sub, { type: 'words' })
+        gsap.set(splitSub.words, { opacity: 0, y: 15, filter: 'blur(6px)' })
+        gsap.to(splitSub.words, {
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 75%',
-            once: true,
-          },
-        }
-      )
+          filter: 'blur(0px)',
+          duration: 0.5,
+          stagger: 0.03,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: sub, start: 'top 85%', once: true },
+        })
+      }
 
-      // Compute scroll distance for the horizontal track.
-      // ScrollTrigger recalculates when window resizes via invalidateOnRefresh.
+      // ── Horizontal scroll timeline (unchanged behaviour) ───────
       const getScrollDistance = () =>
         Math.max(0, track.scrollWidth - window.innerWidth + 96)
 
@@ -59,30 +96,67 @@ export function ExperienceSection() {
         },
       })
 
-      tl.to(
-        track,
-        {
-          x: () => -getScrollDistance(),
-          ease: 'none',
-        },
-        0
-      )
+      tl.to(track, { x: () => -getScrollDistance(), ease: 'none' }, 0)
 
-      // Progress bar in sync with track
       if (progress) {
         tl.to(
           progress,
-          {
-            scaleX: 1,
-            ease: 'none',
-            transformOrigin: 'left center',
-          },
+          { scaleX: 1, ease: 'none', transformOrigin: 'left center' },
           0
         )
       }
+
+      // ── Per-item entrance tied to the horizontal timeline ──────
+      // containerAnimation tells ScrollTrigger to evaluate positions
+      // against the timeline's progress instead of window scroll.
+      const items = Array.from(track.children) as HTMLElement[]
+      gsap.set(items, { opacity: 0, scale: 0.92, y: 24 })
+
+      items.forEach((item) => {
+        gsap.to(item, {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.6,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: item,
+            containerAnimation: tl,
+            start: 'left 90%',
+            once: true,
+          },
+        })
+      })
+
+      // Milestone "big" texts scramble in as each milestone card enters
+      const milestoneBigs = track.querySelectorAll<HTMLElement>(
+        '[data-milestone-big]'
+      )
+      milestoneBigs.forEach((el) => {
+        const originalText = el.textContent ?? ''
+        gsap.to(el, {
+          scrambleText: {
+            text: originalText,
+            chars: scrambleChars,
+            speed: 0.5,
+          },
+          duration: 0.8,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: el,
+            containerAnimation: tl,
+            start: 'left 75%',
+            once: true,
+          },
+        })
+      })
     }, section)
 
-    return () => ctx.revert()
+    return () => {
+      ctx.revert()
+      splitHeading?.revert()
+      splitSub?.revert()
+    }
   }, [])
 
   const experienceMap: Record<string, Experience> = experiences.reduce(
@@ -132,20 +206,20 @@ export function ExperienceSection() {
         >
           <div className="max-w-7xl mx-auto">
             <p
-              data-reveal
+              data-exp-label
               className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-4"
             >
               02 — {t('heading')}
             </p>
             <div className="flex flex-col md:flex-row md:items-end gap-6 justify-between">
               <h2
-                data-reveal
+                data-exp-heading
                 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-[var(--color-text-primary)] leading-tight max-w-xl"
               >
                 {t('heading')}
               </h2>
               <p
-                data-reveal
+                data-exp-sub
                 className="text-[var(--color-text-muted)] max-w-sm text-sm leading-relaxed"
               >
                 {t('subheading')}
@@ -190,7 +264,9 @@ export function ExperienceSection() {
                 )
               }
 
-              // photo tile skeleton — user will drop real photos later
+              // photo tile — real image from public/images/experience/
+              const photoSrc = TRACK_PHOTOS[item.slug]
+              const photoLabel = t(`photos.${item.slug}`)
               return (
                 <div
                   key={`photo-${item.slug}-${i}`}
@@ -198,8 +274,9 @@ export function ExperienceSection() {
                 >
                   <TileSkeleton
                     index={item.index}
-                    label={t(`photos.${item.slug}`)}
-                    hint="Photo · coming soon"
+                    label={photoLabel}
+                    imageSrc={photoSrc}
+                    imageAlt={photoLabel}
                     className="h-full w-full"
                   />
                 </div>
