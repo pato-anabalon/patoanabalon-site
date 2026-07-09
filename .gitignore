@@ -45,3 +45,4 @@ next-env.d.ts
 
 # Local source videos (hosted on Mux — see src/lib/data/creativeVideos.ts)
 /public/videos/creative-work/
+/public/videos/pitch-day/

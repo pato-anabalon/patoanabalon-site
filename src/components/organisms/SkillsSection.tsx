@@ -49,7 +49,9 @@ export function SkillsSection() {
     if (!slides.length) return;
 
     const total = slides.length;
-    const pinScroll = window.innerHeight * (total - 1) * 0.9;
+    // 0.6 → each slide costs ~60% of viewport of scroll (down from ~90%).
+    // Was 0.9; users had to scroll a lot per skill.
+    const pinScroll = window.innerHeight * (total - 1) * 0.6;
     const scrambleChars = "!<>-_/=+*^?#01";
 
     const label = section.querySelector<HTMLElement>("[data-skills-label]");
@@ -247,6 +249,14 @@ export function SkillsSection() {
           scrub: 1,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          // Snap to slide boundaries when the user stops scrolling so we
+          // never rest mid-transition between two skills.
+          snap: {
+            snapTo: 1 / (total - 1),
+            duration: { min: 0.15, max: 0.4 },
+            delay: 0.05,
+            ease: "power2.inOut",
+          },
           onUpdate: (self) => {
             const idx = Math.min(total - 1, Math.floor(self.progress * total));
             if (idx !== activeIndexRef.current) {

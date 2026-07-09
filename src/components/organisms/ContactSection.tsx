@@ -4,10 +4,15 @@ import React, { useEffect, useMemo, useRef, useState } from 'react'
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
+import { FaRegFilePdf, FaRegFileWord } from 'react-icons/fa6'
 import { gsap, SplitText } from '@/lib/animations/gsap'
 import { Button, SocialLink } from '@/components/atoms'
 import { socialLinks } from '@/lib/data/social'
 import { companyLogos } from '@/lib/data/cv'
+import { trackEvent } from '@/lib/analytics'
+
+const RESUME_PDF_PATH = '/docs/patricio-anabalon-resume.pdf'
+const RESUME_DOCX_PATH = '/docs/patricio-anabalon-resume.docx'
 
 const ParticleField = dynamic(
   () => import('@/lib/three/ParticleField').then((m) => m.ParticleField),
@@ -59,6 +64,7 @@ export function ContactSection() {
   const followListRef = useRef<HTMLUListElement>(null)
   const companiesRowRef = useRef<HTMLDivElement>(null)
   const emailCtaRef = useRef<HTMLAnchorElement>(null)
+  const resumeBlockRef = useRef<HTMLDivElement>(null)
 
   // Counter animation targets
   const counterElRef = useRef<HTMLSpanElement>(null)
@@ -207,6 +213,22 @@ export function ContactSection() {
             stagger: 0.06,
             ease: 'power3.out',
             scrollTrigger: { trigger: followListRef.current, start: 'top 82%', once: true },
+          }
+        )
+      }
+
+      // Resume block — fade + subtle scale, ahead of the form
+      if (resumeBlockRef.current) {
+        gsap.fromTo(
+          resumeBlockRef.current,
+          { autoAlpha: 0, y: 20, scale: 0.97 },
+          {
+            autoAlpha: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: resumeBlockRef.current, start: 'top 88%', once: true },
           }
         )
       }
@@ -438,10 +460,58 @@ export function ContactSection() {
             </p>
             <p
               ref={signOffRef}
-              className="text-[var(--color-text-muted)] font-mono text-sm mb-8"
+              className="text-[var(--color-text-muted)] font-mono text-sm mb-6"
             >
               {t('signOff')}
             </p>
+
+            <div
+              ref={resumeBlockRef}
+              data-testid="contact-resume-block"
+              className="mb-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-primary)]/40 p-5"
+            >
+              <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-accent)] mb-2">
+                {t('resumeLabel')}
+              </p>
+              <p className="text-lg md:text-xl font-heading font-bold text-[var(--color-text-primary)] mb-1">
+                {t('resumeHeading')}
+              </p>
+              <p className="text-sm text-[var(--color-text-muted)] mb-4">
+                {t('resumeDescription')}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <a
+                  href={RESUME_PDF_PATH}
+                  download
+                  onClick={() =>
+                    trackEvent('resume_download', {
+                      format: 'pdf',
+                      source: 'contact_section',
+                    })
+                  }
+                  data-testid="resume-download-pdf"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-[var(--color-accent)] bg-[var(--color-accent)] px-6 py-3 text-sm font-medium text-[var(--color-bg-primary)] transition-all duration-300 hover:bg-[var(--color-accent-light)] shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+                >
+                  <FaRegFilePdf aria-hidden="true" />
+                  {t('resumePdf')}
+                </a>
+                <a
+                  href={RESUME_DOCX_PATH}
+                  download
+                  onClick={() =>
+                    trackEvent('resume_download', {
+                      format: 'docx',
+                      source: 'contact_section',
+                    })
+                  }
+                  data-testid="resume-download-docx"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-[var(--color-accent)] px-6 py-3 text-sm font-medium text-[var(--color-accent)] transition-all duration-300 hover:bg-[var(--color-accent)] hover:text-[var(--color-bg-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
+                >
+                  <FaRegFileWord aria-hidden="true" />
+                  {t('resumeDocx')}
+                </a>
+              </div>
+            </div>
 
             {showForm ? (
               <form

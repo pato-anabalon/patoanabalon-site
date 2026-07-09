@@ -154,7 +154,7 @@
     "captions": {
       "latamAwardsCeremony": "LATAM Awards Ceremony",
       "rioDeJaneiro": "Rio de Janeiro",
-      "teamLatam": "LATAM Team",
+      "latamTeam": "LATAM Team",
       "portrait": "Portrait",
       "globant": "Globant",
       "easterIsland": "Easter Island",
@@ -196,6 +196,11 @@
       "invalidChars": "Invalid characters detected. Please remove any HTML or script content."
     },
     "counter": "characters",
-    "successReload": "Refresh the page if you'd like to send another message."
+    "successReload": "Refresh the page if you'd like to send another message.",
+    "resumeLabel": "Resume",
+    "resumeHeading": "Prefer the short version?",
+    "resumeDescription": "Grab my CV — the 60-second read for recruiters.",
+    "resumePdf": "Download PDF",
+    "resumeDocx": "Download DOCX"
   }
 }

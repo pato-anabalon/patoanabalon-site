@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap } from '@/lib/animations/gsap'
 import { VideoCard } from '@/components/molecules'
+import { Icon } from '@/components/atoms'
 import { creativeVideos } from '@/lib/data/creativeVideos'
 import { skillIcons } from '@/lib/data/skillIcons'
 
@@ -93,7 +94,7 @@ export function CreativeSection() {
               className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-300 font-medium group"
               data-testid="creative-instagram-cta"
             >
-              <span>📷</span>
+              <Icon name="instagram" size={18} />
               {t('viewOnInstagram')}
               <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
             </a>

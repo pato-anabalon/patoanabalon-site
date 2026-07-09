@@ -2,10 +2,15 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
+import { FaRegFilePdf, FaRegFileWord } from "react-icons/fa6";
 import { gsap } from "@/lib/animations/gsap";
 import { SocialLink } from "@/components/atoms";
 import { MenuItem } from "@/components/molecules";
 import { socialLinks } from "@/lib/data/social";
+import { trackEvent } from "@/lib/analytics";
+
+const RESUME_PDF_PATH = "/docs/patricio-anabalon-resume.pdf";
+const RESUME_DOCX_PATH = "/docs/patricio-anabalon-resume.docx";
 
 interface FullscreenMenuProps {
   isOpen: boolean;
@@ -376,6 +381,48 @@ export function FullscreenMenu({
                   <span className="text-[var(--color-accent)]">→</span>{" "}
                   Auckland, NZ
                 </p>
+              </div>
+
+              {/* Resume */}
+              <div data-footer-item>
+                <p className="text-xs font-mono uppercase tracking-widest text-[var(--color-text-muted)] mb-2">
+                  {locale === "es" ? "Currículum" : "Resume"}
+                </p>
+                <div className="flex items-center gap-3 text-sm">
+                  <a
+                    href={RESUME_PDF_PATH}
+                    download
+                    onClick={() => {
+                      trackEvent("resume_download", {
+                        format: "pdf",
+                        source: "menu",
+                      });
+                      onClose();
+                    }}
+                    data-testid="menu-resume-pdf"
+                    className="inline-flex items-center gap-1.5 text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors"
+                  >
+                    <FaRegFilePdf aria-hidden="true" />
+                    PDF
+                  </a>
+                  <span className="text-[var(--color-text-muted)]">·</span>
+                  <a
+                    href={RESUME_DOCX_PATH}
+                    download
+                    onClick={() => {
+                      trackEvent("resume_download", {
+                        format: "docx",
+                        source: "menu",
+                      });
+                      onClose();
+                    }}
+                    data-testid="menu-resume-docx"
+                    className="inline-flex items-center gap-1.5 text-[var(--color-text-primary)] hover:text-[var(--color-accent)] transition-colors"
+                  >
+                    <FaRegFileWord aria-hidden="true" />
+                    DOCX
+                  </a>
+                </div>
               </div>
 
               {/* Social */}

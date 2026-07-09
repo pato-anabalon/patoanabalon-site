@@ -196,6 +196,11 @@
       "invalidChars": "Caracteres inválidos detectados. Por favor remueve cualquier HTML o contenido de script."
     },
     "counter": "caracteres",
-    "successReload": "Recarga la página si querés enviar otro mensaje."
+    "successReload": "Recarga la página si querés enviar otro mensaje.",
+    "resumeLabel": "Currículum",
+    "resumeHeading": "¿Preferís la versión corta?",
+    "resumeDescription": "Llevate mi CV — lectura de 60 segundos para recruiters.",
+    "resumePdf": "Descargar PDF",
+    "resumeDocx": "Descargar DOCX"
   }
 }

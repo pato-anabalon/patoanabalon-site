@@ -3,6 +3,8 @@ import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
+import { Analytics } from '@vercel/analytics/next'
+import { GoogleAnalytics } from '@/components/atoms'
 import { routing } from '../../../i18n'
 import '../globals.css'
 
@@ -80,6 +82,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
+        <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   )

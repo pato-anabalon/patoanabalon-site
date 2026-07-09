@@ -52,11 +52,13 @@ export function Navbar() {
   // Navbar is visible when we're past the hero pin OR the fullscreen menu is open.
   const navbarVisible = pastHero || menuOpen
 
-  const toggleLocale = () => {
-    const newLocale = locale === 'en' ? 'es' : 'en'
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`)
+  const switchLocale = (target: 'en' | 'es') => {
+    if (target === locale) return
+    const newPath = pathname.replace(`/${locale}`, `/${target}`)
     router.push(newPath)
   }
+
+  const LOCALES = ['en', 'es'] as const
 
   return (
     <>
@@ -104,15 +106,37 @@ export function Navbar() {
 
           {/* Right side: locale switcher + menu icon */}
           <div className="flex items-center gap-3 sm:gap-6">
-            <button
+            <div
               data-testid="navbar-locale-switcher"
-              onClick={toggleLocale}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[var(--color-border)] text-xs font-mono text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] transition-all duration-300"
+              role="group"
               aria-label="Switch language"
+              className="flex items-center rounded-full border border-[var(--color-border)] pl-2.5 p-0.5 gap-1 text-xs font-mono"
             >
-              <Icon name="globe" size={12} />
-              {locale === 'en' ? 'ES' : 'EN'}
-            </button>
+              <Icon
+                name="globe"
+                size={12}
+                className="text-[var(--color-text-muted)]"
+              />
+              {LOCALES.map((lang) => {
+                const isActive = locale === lang
+                return (
+                  <button
+                    key={lang}
+                    data-testid={`navbar-locale-${lang}`}
+                    onClick={() => switchLocale(lang)}
+                    disabled={isActive}
+                    aria-current={isActive ? 'true' : undefined}
+                    className={`px-3 py-1 rounded-full uppercase tracking-widest transition-all duration-300 ${
+                      isActive
+                        ? 'bg-[var(--color-accent)] text-[var(--color-bg-primary)] cursor-default'
+                        : 'text-[var(--color-text-muted)] hover:text-[var(--color-accent)] cursor-pointer'
+                    }`}
+                  >
+                    {lang}
+                  </button>
+                )
+              })}
+            </div>
 
             <MenuIcon
               isOpen={menuOpen}

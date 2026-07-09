@@ -112,7 +112,7 @@ export const OFF_SCREEN_SETS: OffScreenSet[] = [
     ["latam-22.jpg", "latamAwardsCeremony", 2026], // S8
     ["work-10.jpeg", "startUpChile", 2018], // S9
     ["latam-6.jpg", "latamAwardsCeremony", 2026], // S10 (swap con S4 → work-14)
-    ["work-16.jpeg", "startUpChile", 2018], // S11
+    ["family-8.jpeg", "familyDay", 2025], // S11
     ["family-6.jpeg", "disneyWorld", 2013], // S12
   ]),
   makeSet("set-2", [
@@ -161,7 +161,7 @@ export const OFF_SCREEN_SETS: OffScreenSet[] = [
     ["family-12.jpeg", "easterIsland", 2024], // S6  (swap con M1 → latam-23)
     ["work-13.jpeg", "globant", 2024], // S7
     ["latam-12.jpg", "latamAwardsCeremony", 2026], // S8
-    ["family-8.jpeg", "familyDay", 2025], // S9
+    ["work-16.jpeg", "startUpChile", 2018], // S9
     ["me-6.jpeg", "independenceDay", 2023], // S10
     ["latam-20.jpg", "latamAwardsCeremony", 2026], // S11
     ["latam-9.jpg", "latamAwardsCeremony", 2026], // S12
