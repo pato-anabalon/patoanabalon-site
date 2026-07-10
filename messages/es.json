@@ -202,5 +202,23 @@
     "resumeDescription": "Llevate mi CV — lectura de 60 segundos para recruiters.",
     "resumePdf": "Descargar PDF",
     "resumeDocx": "Descargar DOCX"
+  },
+  "notFound": {
+    "prompt": "$ cat pagina-solicitada.txt",
+    "error": "cat: pagina-solicitada.txt: No such file or directory",
+    "code": "404",
+    "title": "Esta ruta nunca se montó.",
+    "description": "La página que buscás fue renombrada, deployada a un universo paralelo, o nunca existió. Volvamos al punto de entrada.",
+    "cta": "Volver al inicio",
+    "hint": "→ pato → el prompt /"
+  },
+  "error": {
+    "prompt": "$ ./run.sh",
+    "error": "Uncaught exception en el render tree",
+    "code": "500",
+    "title": "Algo se rompió y no lo pude atajar a tiempo.",
+    "description": "Ocurrió un error inesperado al renderizar esta sección. Podés reintentar, o volver al inicio.",
+    "retry": "Reintentar",
+    "cta": "Volver al inicio"
   }
 }

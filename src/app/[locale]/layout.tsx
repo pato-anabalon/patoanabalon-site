@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
 import { getMessages, setRequestLocale } from 'next-intl/server'
@@ -26,33 +26,69 @@ const spaceGrotesk = Space_Grotesk({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  title: 'Patricio "Pato" Anabalon — Senior Software Engineer',
-  description:
-    'Senior Software Engineer with 18+ years of experience. Specialising in Next.js, React, TypeScript and scalable web architectures. Based in Santiago, with Auckland, NZ on the horizon.',
-  keywords: [
-    'Pato Anabalon',
-    'Patricio Anabalon',
-    'Software Engineer',
-    'Senior Developer',
-    'Next.js',
-    'React',
-    'TypeScript',
-    'Auckland',
-    'New Zealand',
-    'Frontend Engineer',
-  ],
-  authors: [{ name: 'Patricio Anabalon' }],
-  openGraph: {
-    title: 'Patricio "Pato" Anabalon — Senior Software Engineer',
-    description: '18+ years crafting digital experiences. Aiming for Auckland, NZ.',
-    type: 'website',
-    locale: 'en_US',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@pato_anabalon',
-  },
+const SITE_URL = 'https://patoanabalon.dev'
+
+const TITLE = 'Patricio "Pato" Anabalon — Senior Software Engineer'
+const DESCRIPTION =
+  'Senior Software Engineer with 18+ years of experience. Next.js, React, TypeScript, Node.js and .NET C#. Based in Santiago, aiming for Auckland, NZ.'
+
+export const viewport: Viewport = {
+  themeColor: '#0F172A',
+  colorScheme: 'dark',
+  width: 'device-width',
+  initialScale: 1,
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const path = `/${locale}`
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: TITLE,
+    description: DESCRIPTION,
+    keywords: [
+      'Pato Anabalon',
+      'Patricio Anabalon',
+      'Software Engineer',
+      'Senior Developer',
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Node.js',
+      '.NET',
+      'Auckland',
+      'New Zealand',
+    ],
+    authors: [{ name: 'Patricio Anabalon', url: SITE_URL }],
+    creator: 'Patricio Anabalon',
+    alternates: {
+      canonical: path,
+      languages: {
+        en: '/en',
+        es: '/es',
+        'x-default': '/en',
+      },
+    },
+    openGraph: {
+      title: TITLE,
+      description: DESCRIPTION,
+      type: 'website',
+      url: path,
+      siteName: 'Pato Anabalon',
+      locale: locale === 'es' ? 'es_ES' : 'en_US',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: TITLE,
+      description: DESCRIPTION,
+      creator: '@pato_anabalon',
+    },
+  }
 }
 
 export default async function LocaleLayout({
