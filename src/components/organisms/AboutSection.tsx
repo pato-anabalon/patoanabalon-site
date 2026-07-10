@@ -41,7 +41,7 @@ export function AboutSection() {
     // Initial hidden states
     gsap.set(headingSplit.lines, { yPercent: 110 })
     bioSplits.forEach((s) => {
-      gsap.set(s.words, { filter: 'blur(8px)', opacity: 0, y: 20 })
+      gsap.set(s.words, { filter: 'blur(2px)', opacity: 0, y: 20 })
     })
     gsap.set(pill, { autoAlpha: 0, scale: 0.95 })
     if (pillArrow) {

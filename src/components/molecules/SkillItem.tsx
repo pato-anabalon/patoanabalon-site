@@ -1,17 +1,17 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { skillIcons } from '@/lib/data/skillIcons'
 
 interface SkillItemProps {
   name: string
 }
 
-export function SkillItem({ name }: SkillItemProps) {
+function SkillItemImpl({ name }: SkillItemProps) {
   const config = skillIcons[name]
 
   return (
     <div
       data-testid={`molecule-skill-item-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-      className="group flex items-center gap-4 rounded-2xl border border-[var(--color-border)] bg-[rgba(30,41,59,0.6)] backdrop-blur-sm p-4 sm:p-5 transition-all duration-500 hover:border-[var(--color-accent)] hover:bg-[rgba(16,185,129,0.06)]"
+      className="group flex items-center gap-4 rounded-2xl border border-[var(--color-border)] bg-[rgba(30,41,59,0.85)] p-4 sm:p-5 transition-all duration-500 hover:border-[var(--color-accent)] hover:bg-[rgba(16,185,129,0.06)]"
     >
       {/* Icon */}
       <div
@@ -34,3 +34,7 @@ export function SkillItem({ name }: SkillItemProps) {
     </div>
   )
 }
+
+// Memoize to keep the 40+ items from re-rendering when SkillsSection's
+// activeIndex state changes (which happens on every deck-stack scrub slide).
+export const SkillItem = memo(SkillItemImpl)

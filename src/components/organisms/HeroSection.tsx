@@ -219,7 +219,6 @@ export function HeroSection() {
         heroCard,
         {
           scale: HERO_END_SCALE,
-          borderRadius: 24,
           ease: 'power2.inOut',
         },
         0
@@ -243,37 +242,34 @@ export function HeroSection() {
       )
 
       // ── Natural-scroll parallax exit ─────────────────────────────────────
-      // Triggered by the pinSpacer's bottom moving through the viewport:
-      //   'bottom bottom' fires the moment pin releases (About peeks in at bottom)
-      //   'bottom top'    fires when About top reaches viewport top
-      // GSAP auto-computes the scroll range, so no empty gap is possible.
+      // Single timeline sharing one ScrollTrigger — used to be 7 individual
+      // ST instances (heroCard + 6 tiles) which each ran their own bounds
+      // recompute per scroll frame. Consolidated to reduce per-frame overhead.
       const vh = window.innerHeight
 
-      // Hero card fades and drifts up during the first half of the exit scroll
-      gsap.to(heroCard, {
-        opacity: 0,
-        y: -vh * 0.35,
-        ease: 'none',
+      const exitTl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
           start: 'bottom bottom',
-          end: 'bottom 55%',
+          end: 'bottom top',
           scrub: 1,
         },
       })
 
-      // Each tile drifts up at its own rate (parallax depth)
+      // Hero card fades and drifts up during the first ~55% of the exit range
+      exitTl.to(
+        heroCard,
+        { opacity: 0, y: -vh * 0.35, ease: 'none', duration: 0.55 },
+        0,
+      )
+
+      // Each tile drifts at its own rate across the full range
       tiles.forEach((tile, i) => {
-        gsap.to(tile, {
-          y: -vh * parallaxSpeed[i],
-          ease: 'none',
-          scrollTrigger: {
-            trigger: section,
-            start: 'bottom bottom',
-            end: 'bottom top',
-            scrub: 1,
-          },
-        })
+        exitTl.to(
+          tile,
+          { y: -vh * parallaxSpeed[i], ease: 'none', duration: 1 },
+          0,
+        )
       })
     }, section)
 
@@ -329,7 +325,7 @@ export function HeroSection() {
             <div
               key={key}
               data-tile={i}
-              style={{ gridArea: `t${i + 1}`, opacity: 0 }}
+              style={{ gridArea: `t${i + 1}`, opacity: 0, willChange: 'transform, opacity' }}
               className="h-full w-full"
             >
               <TileSkeleton
@@ -350,7 +346,7 @@ export function HeroSection() {
           ref={heroCardRef}
           data-testid="hero-card"
           className="absolute inset-0 z-10 origin-center overflow-hidden will-change-transform"
-          style={{ transformOrigin: 'center center' }}
+          style={{ transformOrigin: 'center center', borderRadius: 24 }}
         >
           {/* Vortex particle background — full-area flow field. */}
           <div className="absolute inset-0" aria-hidden="true">

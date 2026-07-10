@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.DS_Store
+*.tsbuildinfo
+
+# Local-only source videos — hosted on Mux, referenced via src/lib/data/creativeVideos.ts
+/public/videos/creative-work/
+/public/videos/pitch-day/
+
+# Local reference CV
+*.docx
+
+# Env files
+.env*
+!.env.example

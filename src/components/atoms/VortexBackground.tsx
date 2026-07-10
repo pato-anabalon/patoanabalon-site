@@ -35,7 +35,7 @@ export interface VortexBackgroundProps {
 }
 
 const DEFAULT_COLORS = ["#10B981", "#34D399", "#6EE7B7"];
-const DEFAULT_GLOW_BLURS = [8, 4];
+const DEFAULT_GLOW_BLURS = [4, 2];
 const TAU = Math.PI * 2;
 const NOISE_STEPS = 3;
 const X_OFF = 0.00125;
@@ -80,7 +80,7 @@ export function VortexBackground({
   colors = DEFAULT_COLORS,
   position = "center",
   bandHeight = 100,
-  particleCount = 500,
+  particleCount = 250,
   opacity = 1,
   baseSpeed = 0,
   rangeSpeed = 1.5,
@@ -266,12 +266,27 @@ export function VortexBackground({
       ctx.restore();
     };
 
+    // Track viewport intersection so the rAF loop can pause while off-screen.
+    // The wrapper is the observation target — even at opacity 0 it still owns
+    // layout, so IntersectionObserver reflects the actual viewport overlap.
+    let visible = true;
+
     const frame = () => {
+      if (!visible) {
+        rafId = 0;
+        return;
+      }
       tick++;
       paintBackground();
       for (let idx = 0; idx < particleCount; idx++) updateAndDraw(idx);
       applyGlow();
       rafId = window.requestAnimationFrame(frame);
+    };
+
+    const start = () => {
+      if (rafId === 0 && visible) {
+        rafId = window.requestAnimationFrame(frame);
+      }
     };
 
     resize();
@@ -287,7 +302,20 @@ export function VortexBackground({
       for (let idx = 0; idx < particleCount; idx++) updateAndDraw(idx);
       applyGlow();
     } else {
-      rafId = window.requestAnimationFrame(frame);
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          visible = entry.isIntersecting;
+          if (visible) start();
+        },
+        { rootMargin: '100px' },
+      );
+      io.observe(wrapper);
+
+      return () => {
+        cancelAnimationFrame(rafId);
+        ro.disconnect();
+        io.disconnect();
+      };
     }
 
     return () => {

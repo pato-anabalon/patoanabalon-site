@@ -65,68 +65,36 @@ export function SkillsSection() {
       gsap.set(splitHeading.chars, { autoAlpha: 0, y: 30 });
     }
 
-    // Per-slide setup — split titles and descriptions once, hide internals
+    // Per-slide setup — grab element refs, no SplitText per slide (was creating
+    // ~400 DOM nodes across 11 slides which pushed the tab over the OOM edge).
     type SlideAssets = {
       label: HTMLElement | null;
       title: HTMLElement | null;
       desc: HTMLElement | null;
       cards: HTMLElement[];
-      titleSplit: SplitText | null;
-      descSplit: SplitText | null;
     };
 
-    const slideAssets: SlideAssets[] = slides.map((slide) => {
-      const catLabel = slide.querySelector<HTMLElement>("[data-cat-label]");
-      const catTitle = slide.querySelector<HTMLElement>("[data-cat-title]");
-      const catDesc = slide.querySelector<HTMLElement>("[data-cat-desc]");
-      const cards = Array.from(
+    const slideAssets: SlideAssets[] = slides.map((slide) => ({
+      label: slide.querySelector<HTMLElement>("[data-cat-label]"),
+      title: slide.querySelector<HTMLElement>("[data-cat-title]"),
+      desc: slide.querySelector<HTMLElement>("[data-cat-desc]"),
+      cards: Array.from(
         slide.querySelectorAll<HTMLElement>(
           '[data-testid^="molecule-skill-item-"]',
         ),
-      );
-
-      const titleSplit = catTitle
-        ? new SplitText(catTitle, { type: "chars" })
-        : null;
-      const descSplit = catDesc
-        ? new SplitText(catDesc, { type: "words" })
-        : null;
-
-      return {
-        label: catLabel,
-        title: catTitle,
-        desc: catDesc,
-        cards,
-        titleSplit,
-        descSplit,
-      };
-    });
+      ),
+    }));
 
     // Hide every slide's internals so cascadeSlide() can reveal them
-    slideAssets.forEach(({ label, title, titleSplit, descSplit, cards }) => {
+    slideAssets.forEach(({ label, title, desc, cards }) => {
       if (label) gsap.set(label, { autoAlpha: 0, x: -20 });
-      if (title) gsap.set(title, { perspective: 800 });
-      if (titleSplit) {
-        gsap.set(titleSplit.chars, {
-          autoAlpha: 0,
-          rotationY: -50,
-          transformOrigin: "left center",
-        });
-      }
-      if (descSplit) {
-        gsap.set(descSplit.words, {
-          autoAlpha: 0,
-          filter: "blur(6px)",
-          y: 10,
-        });
-      }
-      if (cards.length) {
-        gsap.set(cards, {
-          autoAlpha: 0,
-          rotationY: 90,
-          transformOrigin: "left center",
-        });
-      }
+      if (title) gsap.set(title, { autoAlpha: 0, y: 24 });
+      if (desc) gsap.set(desc, { autoAlpha: 0, y: 16 });
+      // Cards animate in as a flat fade + small vertical drift + stagger.
+      // Previously used rotationY: 45 with perspective — created 3D compositing
+      // layers per card that persisted after the cascade and accumulated GPU
+      // memory across the 11 slides, causing OOM.
+      if (cards.length) gsap.set(cards, { autoAlpha: 0, y: 20 });
     });
 
     // Cascade a slide once — subsequent calls for the same index are no-ops
@@ -146,28 +114,25 @@ export function SkillsSection() {
           ease: "power2.out",
         });
       }
-      if (assets.titleSplit) {
+      if (assets.title) {
         tl.to(
-          assets.titleSplit.chars,
+          assets.title,
           {
             autoAlpha: 1,
-            rotationY: 0,
+            y: 0,
             duration: 0.55,
-            stagger: 0.025,
             ease: "power3.out",
           },
           "-=0.2",
         );
       }
-      if (assets.descSplit) {
+      if (assets.desc) {
         tl.to(
-          assets.descSplit.words,
+          assets.desc,
           {
             autoAlpha: 1,
-            filter: "blur(0px)",
             y: 0,
             duration: 0.5,
-            stagger: 0.02,
             ease: "power2.out",
           },
           "-=0.35",
@@ -179,8 +144,8 @@ export function SkillsSection() {
           assets.cards,
           {
             autoAlpha: 1,
-            rotationY: 0,
-            duration: 0.7,
+            y: 0,
+            duration: 0.55,
             stagger: {
               grid: [rows, 2],
               from: "start",
@@ -298,10 +263,6 @@ export function SkillsSection() {
     return () => {
       ctx.revert();
       splitHeading?.revert();
-      slideAssets.forEach(({ titleSplit, descSplit }) => {
-        titleSplit?.revert();
-        descSplit?.revert();
-      });
       ScrollTrigger.getAll().forEach((st) => {
         if (st.trigger === section) st.kill();
       });
@@ -343,6 +304,8 @@ export function SkillsSection() {
           className="absolute inset-0 z-0 pointer-events-none"
           position="bottom"
           bandHeight="80%"
+          particleCount={100}
+          glowBlurs={[]}
           colors={SKILL_PALETTES[CATEGORY_ORDER[activeIndex]]}
         />
 
@@ -407,7 +370,7 @@ export function SkillsSection() {
                   key={cat}
                   data-cat-index={i}
                   data-testid={`skills-slide-${cat}`}
-                  className="absolute inset-0 flex items-center will-change-transform"
+                  className="absolute inset-0 flex items-center"
                 >
                   <div className="grid md:grid-cols-2 gap-10 md:gap-16 w-full items-center">
                     {/* Left: category info */}
@@ -433,10 +396,7 @@ export function SkillsSection() {
                     </div>
 
                     {/* Right: skills grid */}
-                    <div
-                      className="grid grid-cols-2 gap-3 sm:gap-4 max-h-[70vh] overflow-hidden"
-                      style={{ perspective: "1000px" }}
-                    >
+                    <div className="grid grid-cols-2 gap-3 sm:gap-4 max-h-[70vh] overflow-hidden">
                       {categorySkills.map((skill) => (
                         <SkillItem key={skill.name} name={skill.name} />
                       ))}
