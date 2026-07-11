@@ -11,7 +11,7 @@ function SkillItemImpl({ name }: SkillItemProps) {
   return (
     <div
       data-testid={`molecule-skill-item-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
-      className="group flex items-center gap-4 rounded-2xl border border-[var(--color-border)] bg-[rgba(30,41,59,0.85)] p-4 sm:p-5 transition-all duration-500 hover:border-[var(--color-accent)] hover:bg-[rgba(16,185,129,0.06)]"
+      className="group flex items-center gap-1 sm:gap-4 rounded-2xl border border-[var(--color-border)] bg-[rgba(30,41,59,0.85)] p-1 sm:p-5 transition-all duration-500 hover:border-[var(--color-accent)] hover:bg-[rgba(16,185,129,0.06)]"
     >
       {/* Icon */}
       <div

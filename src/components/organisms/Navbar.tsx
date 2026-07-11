@@ -22,9 +22,13 @@ export function Navbar() {
   const activeSection = useActiveSection(SECTION_IDS)
 
   useEffect(() => {
-    // Pin releases at scroll 100vh, About top hits viewport top at ~200vh.
-    // 1.5vh drops the navbar mid-exit (About is ~50% up the viewport).
-    const revealAt = () => window.innerHeight * 1.5
+    // Desktop: pin releases at 100vh, About top hits viewport top at ~200vh.
+    //   1.5vh drops the navbar mid-exit (About is ~50% up the viewport).
+    // Mobile: no pin, About top hits viewport top at ~100vh.
+    //   0.7vh drops it as the hero is ~70% scrolled out.
+    const mobileMq = window.matchMedia('(max-width: 767px)')
+    const revealAt = () =>
+      window.innerHeight * (mobileMq.matches ? 0.7 : 1.5)
 
     const handleScroll = () => {
       const y = window.scrollY
@@ -34,9 +38,11 @@ export function Navbar() {
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     window.addEventListener('resize', handleScroll)
+    mobileMq.addEventListener('change', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('resize', handleScroll)
+      mobileMq.removeEventListener('change', handleScroll)
     }
   }, [])
 

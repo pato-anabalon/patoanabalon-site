@@ -67,7 +67,7 @@ export function CreativeSection() {
       id="creative"
       data-testid="creative-section"
       ref={sectionRef}
-      className="py-32 px-6 bg-[var(--color-bg-primary)]"
+      className="pt-32 pb-16 px-6 bg-[var(--color-bg-primary)]"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}

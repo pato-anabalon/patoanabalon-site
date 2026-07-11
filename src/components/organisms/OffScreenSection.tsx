@@ -189,7 +189,7 @@ export function OffScreenSection() {
       id="offscreen"
       data-testid="offscreen-section"
       ref={sectionRef}
-      className="relative py-24 md:py-32 px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-[var(--color-bg-primary)] overflow-hidden"
+      className="relative pt-12 md:pt-16 pb-24 md:pb-32 px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 bg-[var(--color-bg-primary)] overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Header — label + H2 + subheading (subheading right on md+) */}

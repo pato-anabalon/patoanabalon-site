@@ -520,6 +520,7 @@ export function ContactSection() {
                 onSubmit={handleSubmit}
                 noValidate
                 className="space-y-3"
+                suppressHydrationWarning
               >
                 <div data-form-field>
                   <input
@@ -532,6 +533,7 @@ export function ContactSection() {
                     className={inputClass}
                     data-testid="contact-input-name"
                     disabled={formState === 'sending'}
+                    suppressHydrationWarning
                   />
                 </div>
 
@@ -549,6 +551,7 @@ export function ContactSection() {
                     disabled={formState === 'sending'}
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? 'email-error' : undefined}
+                    suppressHydrationWarning
                   />
                   {errors.email && (
                     <p
@@ -571,6 +574,7 @@ export function ContactSection() {
                     className={`${inputClass} resize-none`}
                     data-testid="contact-input-message"
                     disabled={formState === 'sending'}
+                    suppressHydrationWarning
                   />
                   <div className="mt-1.5 flex justify-end text-[10px] font-mono uppercase tracking-widest">
                     <span
