@@ -242,12 +242,19 @@ export function ExperienceSection() {
               if (item.kind === 'company') {
                 const exp = experienceMap[item.id]
                 if (!exp) return null
+                const translatedExp: Experience = {
+                  ...exp,
+                  role: t(`companies.${item.id}.role`),
+                  period: t(`companies.${item.id}.period`),
+                  description: t.raw(`companies.${item.id}.description`) as string[],
+                }
                 return (
                   <CompanyCard
                     key={`company-${item.id}-${i}`}
-                    experience={exp}
+                    experience={translatedExp}
                     logoSrc={companyLogos[item.id]}
                     isPresent={exp.id === 'latam'}
+                    nowLabel={t('nowLabel')}
                   />
                 )
               }
@@ -257,9 +264,10 @@ export function ExperienceSection() {
                   <MilestoneCard
                     key={`milestone-${item.slug}-${i}`}
                     slug={item.slug}
-                    big={item.big}
-                    year={item.year}
-                    text={t(`milestones.${item.slug}`)}
+                    big={t(`milestones.${item.slug}.big`)}
+                    year={t(`milestones.${item.slug}.year`)}
+                    text={t(`milestones.${item.slug}.text`)}
+                    label={t('milestoneLabel')}
                   />
                 )
               }
@@ -289,13 +297,13 @@ export function ExperienceSection() {
               className="flex-shrink-0 w-[240px] sm:w-[280px] h-[520px] rounded-3xl border border-dashed border-[var(--color-border)] flex flex-col items-center justify-center gap-4 p-8 text-center"
             >
               <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
-                End of timeline
+                {t('trackEnd.label')}
               </span>
               <p className="text-lg font-heading text-[var(--color-text-primary)]">
-                More chapters ahead ↓
+                {t('trackEnd.message')}
               </p>
               <span className="text-xs text-[var(--color-text-muted)]">
-                Keep scrolling
+                {t('trackEnd.hint')}
               </span>
             </div>
           </div>

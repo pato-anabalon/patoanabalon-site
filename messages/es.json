@@ -20,11 +20,10 @@
     "menuClose": "Cerrar"
   },
   "hero": {
-    "title": "Patricio Anabalon",
+    "title": "Pato Anabalon",
     "role": "Senior Software Engineer",
-    "chip": "Hola, soy Pato",
-    "tagline": "18+ años construyendo experiencias digitales — con Auckland en el horizonte.",
-    "nicknameNote": "los amigos me dicen pato · patoanabalon.dev",
+    "chip": "Software Engineer",
+    "tagline": "18+ años convirtiendo ideas complejas en productos accesibles que la gente disfruta usar.",
     "scrollCta": "Explorar",
     "tiles": {
       "tile1": { "label": "Workspace", "hint": "Donde programo" },
@@ -48,18 +47,89 @@
     "heading": "Experiencia",
     "subheading": "Una carrera construida sobre entrega, liderazgo y crecimiento continuo",
     "presentLabel": "Presente",
-    "scrollHint": "Desliza para explorar →",
+    "scrollHint": "Haz scroll para explorar ↓",
     "trackLabel": "Línea de tiempo",
+    "nowLabel": "Ahora",
+    "milestoneLabel": "Hito",
+    "trackEnd": {
+      "label": "Fin de la línea de tiempo",
+      "message": "Más capítulos por delante ↓",
+      "hint": "Sigue haciendo scroll"
+    },
+    "companies": {
+      "latam": {
+        "role": "Senior Front End Developer",
+        "period": "Mar 2024 – Presente",
+        "description": [
+          "Desarrollé componentes UI responsivos y accesibles para productos Upgrade de cabina y Agrupación dinámica de ancillaries en los flujos de selección de vuelos, tarifas y asientos de LATAM.com",
+          "Diseñé y ejecuté experimentos A/B en producción con Google Optimize y ABSmartly, mejorando la conversión de compra.",
+          "Participé del líderazgo del cluster Engage & Booking y automaticé procesos internos y reportería."
+        ]
+      },
+      "globant": {
+        "role": "Senior Software Engineer",
+        "period": "Feb 2021 – Feb 2024",
+        "description": [
+          "Diseñé e implementé soluciones web responsivas con el framework Svelte.",
+          "Entregué componentes UI enfocados en rendimiento, reduciendo tiempos de carga y mejorando la UX.",
+          "Construí módulos de ventas y servicios auxiliares con React.js, Next.js, Jest, RTL, Storybook y WebdriverIO.",
+          "Participé del programa de mentoring de Globant, ayudando a desarrolladores semi senior a crecer profesionalmente."
+        ]
+      },
+      "amicar": {
+        "role": "Software Development Manager",
+        "period": "Abr 2019 – Dic 2020",
+        "description": [
+          "Lideré la transformación digital supervisando equipos de frontend, backend y Salesforce bajo Scrum.",
+          "Participé en el Diseño e implementación de la nueva arquitectura cloud altamente escalable en GCP.",
+          "Impulsé el alineamiento entre stakeholders de negocio y equipos técnicos durante la digitalización de la plataforma."
+        ]
+      },
+      "mink": {
+        "role": "Co-Founder & CTO",
+        "period": "Sep 2018 – Dic 2020",
+        "description": [
+          "Co-fundé y lideré la estrategia técnica de una startup proptech enfocada en inversión inmobiliaria.",
+          "Desarrollé la plataforma de inversión inmobiliaria \"Webi\" como desarrollador full-stack.",
+          "Representé a la startup en el programa de aceleración Start-Up Chile G19."
+        ]
+      },
+      "indexa": {
+        "role": "Developer Analyst & Technical Leader",
+        "period": "Mar 2007 – Dic 2017",
+        "description": [
+          "Lideré el desarrollo y la dirección técnica de una plataforma de créditos automotrices para Scotiabank, Banco BICE y Amicar.",
+          "Actué como Technical Lead guiando decisiones arquitectónicas y mentorizando desarrolladores junior.",
+          "Diseñé, desarrollé y mantuve sistemas de gestión de créditos automotrices durante más de 10 años."
+        ]
+      }
+    },
     "milestones": {
-      "latamAward": "LATAM Service Leader — reconocido por Safety, Sustainability y valores J.E.T.S.",
-      "globantAward": "Constantly Innovate — reconocimiento anual de toda la compañía en Globant",
-      "startupChile": "Seleccionado para el programa de aceleración Start-Up Chile G19",
-      "yearsCoding": "años entregando código en producción en distintas industrias"
+      "latamAward": {
+        "big": "Líder de Servicio",
+        "year": "2025",
+        "text": "Líder de Servicio LATAM — reconocido por representar los valores de Seguridad, Sostenibilidad y J.E.T.S. (Justo, Empático, Transparente y Simple)"
+      },
+      "globantAward": {
+        "big": "Constantly Innovate",
+        "year": "2022",
+        "text": "Constantly Innovate — galardón anual otorgado por ser el trabajador más reconocido en StarMeUp con el valor de innovación constante"
+      },
+      "startupChile": {
+        "big": "Start-Up Chile G19",
+        "year": "2019",
+        "text": "Seleccionado para el programa de aceleración Start-Up Chile G19"
+      },
+      "yearsCoding": {
+        "big": "18+",
+        "year": "Años",
+        "text": "años de experiencia entregando código de calidad en producción en distintas industrias y tecnologías"
+      }
     },
     "photos": {
-      "latamCeremony": "LATAM · ceremonia de premiación",
-      "globantTeam": "Globant · retiro de equipo",
-      "minkPitch": "Mink · día de pitch"
+      "latamCeremony": "LATAM · Ceremonia de premiación",
+      "globantTeam": "Globant · Globant together 2022",
+      "minkPitch": "Mink · Día de pitch"
     }
   },
   "skills": {
@@ -88,7 +158,7 @@
         "description": "Aprovisionamiento y escalado en AWS, GCP y edge modernos con Terraform."
       },
       "ai": {
-        "title": "Herramientas IA",
+        "title": "IA Tools",
         "description": "Trabajando con Claude, Cursor y Codex para avanzar más rápido con intención."
       },
       "testing": {

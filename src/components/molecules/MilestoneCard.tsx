@@ -1,13 +1,14 @@
-import React from 'react'
+import React from 'react';
 
 interface MilestoneCardProps {
-  slug: string
-  big: string
-  year: string
-  text: string
+  slug: string;
+  big: string;
+  year: string;
+  text: string;
+  label: string;
 }
 
-export function MilestoneCard({ slug, big, year, text }: MilestoneCardProps) {
+export function MilestoneCard({ slug, big, year, text, label }: MilestoneCardProps) {
   return (
     <article
       data-testid={`molecule-milestone-card-${slug}`}
@@ -16,29 +17,25 @@ export function MilestoneCard({ slug, big, year, text }: MilestoneCardProps) {
       {/* Corner accents */}
       <div className="absolute top-6 right-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[var(--color-accent)]">
         <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
-        Milestone
+        {label}
       </div>
 
       {/* Year label */}
-      <p className="mt-8 text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
-        {year}
-      </p>
+      <p className="mt-8 text-[15px] font-mono uppercase tracking-widest text-[var(--color-text-muted)]">{year}</p>
 
       {/* Big statement */}
       <p
         data-milestone-big
-        className="text-[3.5rem] leading-[0.95] font-heading font-bold text-[var(--color-accent)] tracking-tight break-words"
+        className="text-[3.2rem] leading-[0.95] font-heading font-bold text-[var(--color-accent)] tracking-tight break-words"
       >
         {big}
       </p>
 
       {/* Body */}
-      <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">
-        {text}
-      </p>
+      <p className="text-sm leading-relaxed text-[var(--color-text-muted)]">{text}</p>
 
       {/* Bottom accent line */}
       <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent opacity-40" />
     </article>
-  )
+  );
 }

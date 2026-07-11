@@ -1,0 +1,9 @@
+.next
+.swc
+.vercel
+coverage
+node_modules
+test-results
+
+.env
+.env.*

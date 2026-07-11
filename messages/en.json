@@ -20,11 +20,10 @@
     "menuClose": "Close"
   },
   "hero": {
-    "title": "Patricio Anabalon",
+    "title": "Pato Anabalon",
     "role": "Senior Software Engineer",
-    "chip": "Hi, I'm Pato",
-    "tagline": "18+ years crafting digital experiences — with Auckland on the horizon.",
-    "nicknameNote": "friends call me pato · patoanabalon.dev",
+    "chip": "Software Engineer",
+    "tagline": "18+ years turning complex ideas into accessible products people enjoy using.",
     "scrollCta": "Scroll to explore",
     "tiles": {
       "tile1": { "label": "Workspace", "hint": "Where I code" },
@@ -48,18 +47,89 @@
     "heading": "Experience",
     "subheading": "A career built on delivery, leadership & continuous growth",
     "presentLabel": "Present",
-    "scrollHint": "Scroll to explore →",
+    "scrollHint": "Scroll to explore ↓",
     "trackLabel": "Timeline",
+    "nowLabel": "Now",
+    "milestoneLabel": "Milestone",
+    "trackEnd": {
+      "label": "End of timeline",
+      "message": "More chapters ahead ↓",
+      "hint": "Keep scrolling"
+    },
+    "companies": {
+      "latam": {
+        "role": "Senior Front End Developer",
+        "period": "Mar 2024 – Present",
+        "description": [
+          "Developed responsive and accessible UI components for Cabin Upgrade products and Dynamic Bundle of ancillaries in the flight, fares, and seat selection flows across LATAM's e-commerce platforms.",
+          "Designed and executed A/B experiments in production environment using Google Optimize and ABSmartly, improving purchase conversion.",
+          "Participated in the leadership of the Engage & Booking cluster and automated internal processes and reporting."
+        ]
+      },
+      "globant": {
+        "role": "Senior Software Engineer",
+        "period": "Feb 2021 – Feb 2024",
+        "description": [
+          "Designed and implemented responsive web solutions using Svelte framework.",
+          "Delivered performance-focused UI components reducing load times and improving UX.",
+          "Built sales and ancillary services modules using React.js, Next.js, Jest, RTL, Storybook and WebdriverIO.",
+          "Participated in Globant's mentoring program, helping semi-senior developers to grow professionally."
+        ]
+      },
+      "amicar": {
+        "role": "Software Development Manager",
+        "period": "Apr 2019 – Dec 2020",
+        "description": [
+          "Led digital transformation overseeing frontend, backend, and Salesforce teams via Scrum.",
+          "Designed and implemented highly scalable cloud architecture on AWS.",
+          "Drove alignment between business stakeholders and technical teams during platform digitalisation."
+        ]
+      },
+      "mink": {
+        "role": "Co-Founder & CTO",
+        "period": "Sep 2018 – Dec 2020",
+        "description": [
+          "Co-founded and led the technical strategy of a proptech startup focused on real estate investment.",
+          "Developed the \"Webi\" real estate investment platform as full-stack developer.",
+          "Represented the startup in Start-Up Chile G19 acceleration programme."
+        ]
+      },
+      "indexa": {
+        "role": "Developer Analyst & Technical Leader",
+        "period": "Mar 2007 – Dec 2017",
+        "description": [
+          "Led the development and technical direction of an automotive loan platform for Scotiabank, Bice Bank, and Amicar.",
+          "Acted as Technical Lead guiding architectural decisions and mentoring junior developers.",
+          "Designed, developed, and maintained automotive credit management systems over 10 years."
+        ]
+      }
+    },
     "milestones": {
-      "latamAward": "LATAM Service Leader — recognized for Safety, Sustainability and J.E.T.S. values",
-      "globantAward": "Constantly Innovate — annual company-wide recognition at Globant",
-      "startupChile": "Selected for Start-Up Chile G19 acceleration programme",
-      "yearsCoding": "years shipping production code across industries"
+      "latamAward": {
+        "big": "Service Leader Award",
+        "year": "2025",
+        "text": "LATAM Service Leader — recognized for Safety, Sustainability and J.E.T.S. values"
+      },
+      "globantAward": {
+        "big": "Constantly Innovate Award",
+        "year": "2022",
+        "text": "Constantly Innovate — annual company-wide award given for being the most recognized employee at StarMeUp with the value of constantly innovation"
+      },
+      "startupChile": {
+        "big": "Start-Up Chile G19",
+        "year": "2019",
+        "text": "Selected for Start-Up Chile G19 acceleration programme"
+      },
+      "yearsCoding": {
+        "big": "18+",
+        "year": "Years",
+        "text": "Years of experience shipping quality production code across various industries and technologies"
+      }
     },
     "photos": {
-      "latamCeremony": "LATAM · award ceremony",
-      "globantTeam": "Globant · team retreat",
-      "minkPitch": "Mink · pitch day"
+      "latamCeremony": "LATAM · Award ceremony",
+      "globantTeam": "Globant · Globant together 2022",
+      "minkPitch": "Mink · Pitch day"
     }
   },
   "skills": {

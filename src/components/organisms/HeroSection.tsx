@@ -32,20 +32,18 @@ export function HeroSection() {
   const tilesRef = useRef<HTMLDivElement>(null)
   const scrollIndicatorRef = useRef<HTMLDivElement>(null)
   const chipRef = useRef<HTMLDivElement>(null)
-  const patricioRef = useRef<HTMLSpanElement>(null)
+  const patoRef = useRef<HTMLSpanElement>(null)
   const anabalonRef = useRef<HTMLSpanElement>(null)
   const taglineRef = useRef<HTMLParagraphElement>(null)
   const ctasRef = useRef<HTMLDivElement>(null)
-  const nicknameNoteRef = useRef<HTMLParagraphElement>(null)
 
   useEffect(() => {
     const chip = chipRef.current
-    const patricio = patricioRef.current
+    const pato = patoRef.current
     const anabalon = anabalonRef.current
     const tagline = taglineRef.current
     const ctas = ctasRef.current
-    const nicknameNote = nicknameNoteRef.current
-    if (!chip || !patricio || !anabalon || !tagline || !ctas || !nicknameNote) return
+    if (!chip || !pato || !anabalon || !tagline || !ctas) return
 
     const ctaItems = ctas.querySelectorAll<HTMLElement>('button, a')
     const scrambleChars = '!<>-_/=+*^?#01'
@@ -53,10 +51,9 @@ export function HeroSection() {
     const split = new SplitText(tagline, { type: 'words' })
 
     gsap.set(chip, { autoAlpha: 0, scale: 0.9 })
-    gsap.set([patricio, anabalon], { autoAlpha: 0 })
+    gsap.set([pato, anabalon], { autoAlpha: 0 })
     gsap.set(split.words, { y: 40, opacity: 0, color: '#00FF66' })
     gsap.set(ctaItems, { autoAlpha: 0, scale: 0.85, y: 20 })
-    gsap.set(nicknameNote, { autoAlpha: 0, y: 10 })
 
     let ctx: gsap.Context | undefined
     let ranIntro = false
@@ -75,12 +72,12 @@ export function HeroSection() {
         })
 
         // Reveal H1 spans then scramble-decode in parallel
-        tl.set([patricio, anabalon], { autoAlpha: 1 }, '+=0.05')
+        tl.set([pato, anabalon], { autoAlpha: 1 }, '+=0.05')
         tl.to(
-          patricio,
+          pato,
           {
             scrambleText: {
-              text: 'Patricio',
+              text: 'Pato',
               chars: scrambleChars,
               speed: 0.5,
               revealDelay: 0.15,
@@ -131,18 +128,6 @@ export function HeroSection() {
             ease: 'back.out(1.7)',
           },
           '-=0.3'
-        )
-
-        // Nickname note fades in last — warm P.S. that ties the domain to the name
-        tl.to(
-          nicknameNote,
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.5,
-            ease: 'power2.out',
-          },
-          '-=0.2'
         )
       }, heroContentRef.current!)
 
@@ -380,11 +365,11 @@ export function HeroSection() {
               {/* Name */}
               <h1 className="text-[clamp(3rem,10vw,8rem)] font-bold font-heading leading-none tracking-tight text-[var(--color-text-primary)] mb-6">
                 <span
-                  ref={patricioRef}
+                  ref={patoRef}
                   className="inline-block"
                   style={{ opacity: 0 }}
                 >
-                  Patricio
+                  Pato
                 </span>
                 <br />
                 <span
@@ -426,15 +411,6 @@ export function HeroSection() {
                   Contact me
                 </a>
               </div>
-
-              {/* Nickname note — warm reveal that ties the domain to the name */}
-              <p
-                ref={nicknameNoteRef}
-                className="mt-10 text-[11px] font-mono uppercase tracking-[0.2em] text-[var(--color-text-muted)]"
-                style={{ opacity: 0 }}
-              >
-                {t('nicknameNote')}
-              </p>
             </div>
           </div>
 
