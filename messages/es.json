@@ -134,7 +134,7 @@
   },
   "skills": {
     "heading": "Skills",
-    "subheading": "Tecnologías y herramientas con las que trabajo",
+    "subheading": "Tecnologías y herramientas con las que he trabajado a lo largo de mi carrera",
     "chapterLabel": "Capítulo",
     "categories": {
       "frontend": {
@@ -268,8 +268,8 @@
     "counter": "caracteres",
     "successReload": "Recarga la página si querés enviar otro mensaje.",
     "resumeLabel": "Currículum",
-    "resumeHeading": "¿Preferís la versión corta?",
-    "resumeDescription": "Llevate mi CV — lectura de 60 segundos para recruiters.",
+    "resumeHeading": "¿Prefieres la versión corta?",
+    "resumeDescription": "Llévate mi CV — lectura de 60 segundos para recruiters.",
     "resumePdf": "Descargar PDF",
     "resumeDocx": "Descargar DOCX"
   },

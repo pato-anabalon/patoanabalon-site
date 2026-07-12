@@ -5,6 +5,7 @@ export interface Experience {
   period: string
   description: string[]
   logoUrl?: string
+  tech?: string[]
 }
 
 export interface Skill {

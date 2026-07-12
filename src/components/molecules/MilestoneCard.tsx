@@ -12,7 +12,7 @@ export function MilestoneCard({ slug, big, year, text, label }: MilestoneCardPro
   return (
     <article
       data-testid={`molecule-milestone-card-${slug}`}
-      className="relative flex-shrink-0 w-[300px] sm:w-[340px] h-[520px] rounded-3xl border border-[rgba(16,185,129,0.2)] bg-gradient-to-br from-[rgba(16,185,129,0.08)] via-[var(--color-bg-secondary)] to-[var(--color-bg-secondary)] p-8 flex flex-col justify-between shadow-[0_25px_60px_-20px_rgba(0,0,0,0.7)] overflow-hidden"
+      className="relative flex-shrink-0 w-[320px] sm:w-[340px] h-[476px] sm:h-[520px] rounded-3xl border border-[rgba(16,185,129,0.2)] bg-gradient-to-br from-[rgba(16,185,129,0.08)] via-[var(--color-bg-secondary)] to-[var(--color-bg-secondary)] p-6 sm:p-8 flex flex-col justify-between shadow-[0_25px_60px_-20px_rgba(0,0,0,0.7)] overflow-hidden"
     >
       {/* Corner accents */}
       <div className="absolute top-6 right-6 flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-[var(--color-accent)]">
@@ -26,7 +26,7 @@ export function MilestoneCard({ slug, big, year, text, label }: MilestoneCardPro
       {/* Big statement */}
       <p
         data-milestone-big
-        className="text-[3.2rem] leading-[0.95] font-heading font-bold text-[var(--color-accent)] tracking-tight break-words"
+        className="text-[2.5rem] sm:text-[3.2rem] leading-[0.95] font-heading font-bold text-[var(--color-accent)] tracking-tight break-words"
       >
         {big}
       </p>

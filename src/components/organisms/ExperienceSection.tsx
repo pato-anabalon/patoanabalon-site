@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react'
 import { useTranslations } from 'next-intl'
 import { gsap, SplitText } from '@/lib/animations/gsap'
 import { CompanyCard, MilestoneCard, TileSkeleton } from '@/components/molecules'
-import { experiences, companyLogos } from '@/lib/data/cv'
+import { experiences, companyLogos, companyLogosSmall } from '@/lib/data/cv'
 import { trackItems } from '@/lib/data/experienceTrack'
 import type { Experience } from '@/types'
 
@@ -202,19 +202,19 @@ export function ExperienceSection() {
         {/* Header */}
         <div
           ref={headerRef}
-          className="pt-28 md:pt-32 pb-8 px-6 relative z-10"
+          className="pt-20 sm:pt-28 md:pt-32 pb-4 sm:pb-8 px-6 relative z-10"
         >
           <div className="max-w-7xl mx-auto">
             <p
               data-exp-label
-              className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-4"
+              className="text-xs font-mono text-[var(--color-accent)] uppercase tracking-widest mb-3 sm:mb-4"
             >
               02 — {t('heading')}
             </p>
-            <div className="flex flex-col md:flex-row md:items-end gap-6 justify-between">
+            <div className="flex flex-col md:flex-row md:items-end gap-3 sm:gap-6 justify-between">
               <h2
                 data-exp-heading
-                className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-[var(--color-text-primary)] leading-tight max-w-xl"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-[var(--color-text-primary)] leading-tight max-w-xl"
               >
                 {t('heading')}
               </h2>
@@ -253,6 +253,7 @@ export function ExperienceSection() {
                     key={`company-${item.id}-${i}`}
                     experience={translatedExp}
                     logoSrc={companyLogos[item.id]}
+                    logoSmallSrc={companyLogosSmall[item.id]}
                     isPresent={exp.id === 'latam'}
                     nowLabel={t('nowLabel')}
                   />
@@ -278,7 +279,7 @@ export function ExperienceSection() {
               return (
                 <div
                   key={`photo-${item.slug}-${i}`}
-                  className="flex-shrink-0 w-[300px] sm:w-[340px] h-[520px] shadow-[0_25px_60px_-20px_rgba(0,0,0,0.7)]"
+                  className="flex-shrink-0 w-[320px] sm:w-[340px] h-[476px] sm:h-[520px] shadow-[0_25px_60px_-20px_rgba(0,0,0,0.7)]"
                 >
                   <TileSkeleton
                     index={item.index}
@@ -294,7 +295,7 @@ export function ExperienceSection() {
             {/* End card — closing marker + hint to continue scrolling */}
             <div
               data-testid="experience-track-end"
-              className="flex-shrink-0 w-[240px] sm:w-[280px] h-[520px] rounded-3xl border border-dashed border-[var(--color-border)] flex flex-col items-center justify-center gap-4 p-8 text-center"
+              className="flex-shrink-0 w-[240px] sm:w-[280px] h-[476px] sm:h-[520px] rounded-3xl border border-dashed border-[var(--color-border)] flex flex-col items-center justify-center gap-4 p-8 text-center"
             >
               <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
                 {t('trackEnd.label')}
@@ -310,7 +311,7 @@ export function ExperienceSection() {
         </div>
 
         {/* Progress bar + hint */}
-        <div className="px-6 sm:px-10 lg:px-16 pb-10 relative z-10">
+        <div className="px-6 sm:px-10 lg:px-16 pt-6 sm:pt-0 pb-6 sm:pb-10 relative z-10">
           <div className="max-w-7xl mx-auto flex items-center gap-6">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)] whitespace-nowrap">
               {t('trackLabel')}
