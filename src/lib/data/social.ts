@@ -7,6 +7,11 @@ export const socialLinks: SocialLink[] = [
     handle: 'patricioanabalon',
   },
   {
+    platform: 'github',
+    url: 'https://github.com/pato-anabalon',
+    handle: 'pato-anabalon',
+  },
+  {
     platform: 'instagram',
     url: 'https://www.instagram.com/pato.anabalon',
     handle: '@pato.anabalon',

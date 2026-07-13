@@ -2,7 +2,7 @@ import React from 'react'
 import { Icon } from './Icon'
 import type { SocialLink as SocialLinkType } from '@/types'
 
-type SocialPlatform = 'linkedin' | 'instagram' | 'twitter' | 'whatsapp'
+type SocialPlatform = 'linkedin' | 'github' | 'instagram' | 'twitter' | 'whatsapp'
 
 interface SocialLinkProps {
   link: SocialLinkType
