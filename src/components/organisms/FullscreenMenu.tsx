@@ -372,7 +372,7 @@ export function FullscreenMenu({
           >
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
               {/* Location */}
-              <div data-footer-item>
+              <div data-footer-item className="hidden sm:block">
                 <p className="text-xs font-mono uppercase tracking-widest text-[var(--color-text-muted)] mb-2">
                   {locale === "es" ? "Ubicación" : "Location"}
                 </p>
