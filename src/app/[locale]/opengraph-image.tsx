@@ -176,7 +176,7 @@ export default async function Image() {
                       display: 'flex',
                       alignItems: 'center',
                       gap: 12,
-                      fontSize: line.highlight ? 40 : 24,
+                      fontSize: line.highlight ? 72 : 24,
                       color: line.highlight ? ACCENT_LIGHT : TEXT,
                     }}
                   >
