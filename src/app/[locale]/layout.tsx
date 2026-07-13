@@ -33,6 +33,38 @@ const TITLE = 'Patricio "Pato" Anabalon — Senior Software Engineer'
 const DESCRIPTION =
   'Senior Software Engineer with 18+ years of experience. Next.js, React, TypeScript, Node.js and .NET C#. Based in Santiago, aiming for Auckland, NZ.'
 
+const PERSON_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${SITE_URL}/#person`,
+  name: 'Patricio Anabalon',
+  alternateName: 'Pato Anabalon',
+  url: SITE_URL,
+  image: `${SITE_URL}/images/about-me/me.jpeg`,
+  jobTitle: 'Senior Software Engineer',
+  description: DESCRIPTION,
+  knowsAbout: [
+    'Next.js',
+    'React',
+    'TypeScript',
+    'Node.js',
+    '.NET',
+    'C#',
+    'Web Performance',
+    'Software Architecture',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Santiago',
+    addressCountry: 'CL',
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/patricioanabalon/',
+    'https://github.com/pato-anabalon',
+    'https://x.com/pato_anabalon',
+  ],
+}
+
 export const viewport: Viewport = {
   themeColor: '#0F172A',
   colorScheme: 'dark',
@@ -116,6 +148,10 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
+        />
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
