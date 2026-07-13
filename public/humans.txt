@@ -1,0 +1,27 @@
+/* TEAM */
+
+    Name: Patricio "Pato" Anabalon
+    Role: Senior Software Engineer
+    Location: Santiago, Chile
+    Site: https://patoanabalon.dev
+    GitHub: @pato-anabalon
+    LinkedIn: /in/patricioanabalon
+    X: @pato_anabalon
+
+
+/* SITE */
+
+    Last update: 2026-07-13
+    Language: English, Spanish
+    Standards: HTML5, CSS3, ES2024
+    Components: Next.js 16, React 19, TypeScript, Tailwind CSS v4, GSAP
+    Hosting: Vercel
+
+
+                    ▄▄▄▄▄▄▄▄▄▄▄
+                 ▄██▀         ▀██▄
+               ▄██               ██▄
+              ██     $ whoami     ██
+              ██   › pato          ██
+               ██▄               ▄██
+                 ▀██▄▄▄▄▄▄▄▄▄▄██▀
