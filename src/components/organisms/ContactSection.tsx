@@ -411,8 +411,8 @@ export function ContactSection() {
           </h2>
         </div>
 
-        {/* MIDDLE — 3 columns */}
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)] gap-10 lg:gap-16">
+        {/* MIDDLE — 2 cols on mobile (center spans both, then Navigate + Follow), 3 cols on lg+ */}
+        <div className="grid grid-cols-2 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)_minmax(0,1fr)] gap-10 lg:gap-16">
           {/* LEFT: Navigate */}
           <nav aria-label={t('navigate')} className="order-2 lg:order-1">
             <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)] mb-5">
@@ -445,7 +445,7 @@ export function ContactSection() {
           </nav>
 
           {/* CENTER: subheading + description + form/success */}
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 col-span-2 lg:col-span-1">
             <p
               ref={subheadingRef}
               className="text-[var(--color-accent)] font-medium mb-3"
@@ -638,7 +638,7 @@ export function ContactSection() {
           </div>
 
           {/* RIGHT: Follow */}
-          <div className="order-3">
+          <div className="order-3 text-right">
             <p className="text-[10px] font-mono uppercase tracking-widest text-[var(--color-text-muted)] mb-5">
               {t('follow')}
             </p>
@@ -652,7 +652,7 @@ export function ContactSection() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="finale-link"
+                    className="finale-link finale-link-reverse"
                   >
                     <span className="finale-link-dash" aria-hidden="true" />
                     <span className="finale-link-text">{link.platform}</span>
@@ -661,7 +661,7 @@ export function ContactSection() {
               ))}
             </ul>
 
-            <div className="mt-6 flex items-center gap-2 lg:hidden">
+            <div className="mt-6 flex items-center justify-end gap-2 lg:hidden">
               {socialLinks.map((link) => (
                 <SocialLink
                   key={`icon-${link.platform}`}

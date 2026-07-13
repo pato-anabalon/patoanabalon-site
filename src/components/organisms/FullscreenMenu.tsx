@@ -247,7 +247,7 @@ export function FullscreenMenu({
         <div
           data-testid="fullscreen-menu-left-panel"
           ref={panelLeftRef}
-          className="relative w-full lg:w-[42%] h-[35vh] lg:h-full bg-[var(--color-bg-secondary)] overflow-hidden"
+          className="relative w-full lg:w-[42%] h-[25vh] lg:h-full bg-[var(--color-bg-secondary)] overflow-hidden"
         >
           {/* Stack of visual cards — one per section, revealed based on active/hover */}
           <div ref={visualsRef} className="absolute inset-0">
@@ -332,8 +332,8 @@ export function FullscreenMenu({
           ref={panelRightRef}
           className="relative flex-1 bg-[var(--color-bg-primary)] flex flex-col overflow-hidden"
         >
-          {/* Top mini header inside panel */}
-          <div className="px-6 sm:px-10 lg:px-16 pt-8 lg:pt-12 pb-2">
+          {/* Top mini header inside panel — hidden on mobile to reclaim vertical space */}
+          <div className="hidden sm:block px-6 sm:px-10 lg:px-16 pt-8 lg:pt-12 pb-2">
             <p className="text-xs font-mono uppercase tracking-widest text-[var(--color-text-muted)]">
               {locale === "es" ? "Navegación" : "Navigation"} — {items.length}
             </p>
@@ -343,7 +343,7 @@ export function FullscreenMenu({
           <nav
             data-testid="fullscreen-menu-nav"
             ref={itemsRef}
-            className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 py-8 gap-0"
+            className="flex-1 flex flex-col justify-center px-6 sm:px-10 lg:px-16 py-4 sm:py-8 gap-0"
             onMouseLeave={() => setHoveredIndex(null)}
           >
             {items.map((item, i) => (

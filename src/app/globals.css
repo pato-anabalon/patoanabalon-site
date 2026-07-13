@@ -309,6 +309,23 @@ h1, h2, h3, h4 {
   color: var(--color-accent);
 }
 
+/* Reverse variant — dash animates in from the right instead of the left. */
+.finale-link-reverse {
+  flex-direction: row-reverse;
+}
+.finale-link-reverse .finale-link-dash {
+  margin-right: 0;
+  margin-left: 0;
+  transition:
+    width 0.4s cubic-bezier(0.65, 0, 0.35, 1),
+    margin-left 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.finale-link-reverse:hover .finale-link-dash,
+.finale-link-reverse:focus-visible .finale-link-dash {
+  margin-right: 0;
+  margin-left: 12px;
+}
+
 /* ── Off-Screen bento grid ────────────────────────────────────────
    Desktop: 4 cols × 5 rows, asymmetric layout with 1 large + 2 medium + 12 small.
    Tablet:  3 cols × 4 rows, drops the smallest slots.

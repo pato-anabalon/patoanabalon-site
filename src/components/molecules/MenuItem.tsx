@@ -107,7 +107,7 @@ export function MenuItem({
       />
 
       {/* Content */}
-      <div className="relative z-10 flex items-baseline gap-4 sm:gap-8 py-2 sm:py-3 xl:py-1.5 2xl:py-1">
+      <div className="relative z-10 flex items-baseline gap-4 sm:gap-8 py-1.5 sm:py-3 xl:py-1.5 2xl:py-1">
         {/* Number prefix */}
         <span
           data-testid={`menu-item-number-${index}`}
@@ -124,7 +124,7 @@ export function MenuItem({
         <span className="relative overflow-hidden inline-block">
           <span
             data-testid={`menu-item-label-${href.replace('#', '')}`}
-            className={`inline-block text-[13vw] sm:text-[9vw] md:text-[7vw] lg:text-[5.5vw] xl:text-[4.2vw] 2xl:text-[3.6vw] leading-[0.9] font-heading font-bold transition-colors duration-500 ease-out ${
+            className={`inline-block text-[8vw] sm:text-[9vw] md:text-[7vw] lg:text-[5.5vw] xl:text-[4.2vw] 2xl:text-[3.6vw] leading-[0.9] font-heading font-bold transition-colors duration-500 ease-out ${
               isActive
                 ? 'text-[var(--color-accent)]'
                 : 'text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)]'

@@ -27,7 +27,7 @@ export const experiences: Experience[] = [
       "Designed and executed production experiments using ABSmartly, improving purchase conversion.",
       "Mentored peers, contributed to code reviews, and automated internal processes and reporting.",
     ],
-    tech: ["react", "typescript", "next", "storybook", "jest"],
+    tech: ["react", "typescript", "next", "jest", "cursor", "grafana", "a11y"],
   },
   {
     id: "globant",
@@ -39,7 +39,7 @@ export const experiences: Experience[] = [
       "Delivered performance-focused UI components reducing load times and improving UX.",
       "Built sales and ancillary services modules using React.js, Next.js, Jest, RTL, Storybook and WebdriverIO.",
     ],
-    tech: ["svelte", "react", "next", "storybook", "webdriverio"],
+    tech: ["react", "next", "storybook", "webdriverio", "svelte", "aws", "a11y"],
   },
   {
     id: "amicar",
@@ -51,7 +51,7 @@ export const experiences: Experience[] = [
       "Designed and implemented highly scalable cloud architecture on AWS.",
       "Drove alignment between business stakeholders and technical teams during platform digitalisation.",
     ],
-    tech: ["react", "typescript", "node", "terraform", "jira"],
+    tech: ["react", "typescript", "node", "googlecloud", "jira", "swagger", "mui"],
   },
   {
     id: "mink",
@@ -63,7 +63,7 @@ export const experiences: Experience[] = [
       'Developed the "Webi" real estate investment platform as full-stack developer.',
       "Represented the startup in Start-Up Chile G19 acceleration programme.",
     ],
-    tech: ["node", "react", "mongodb", "javascript"],
+    tech: ["node", "react", "mongodb", "javascript", "github", "circleci", "i18n"],
   },
   {
     id: "indexa",
@@ -75,7 +75,7 @@ export const experiences: Experience[] = [
       "Acted as Technical Lead guiding architectural decisions and mentoring junior developers.",
       "Designed, developed, and maintained automotive credit management systems over 10 years.",
     ],
-    tech: ["dotnet", "php", "mysql", "jquery"],
+    tech: ["dotnet", "mssql", "jquery", "complus", "css", "tortoise"],
   },
 ];
 

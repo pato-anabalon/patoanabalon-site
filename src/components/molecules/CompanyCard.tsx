@@ -17,7 +17,23 @@ import {
   SiPhp,
   SiMysql,
   SiJquery,
+  SiCursor,
+  SiGrafana,
+  SiGooglecloud,
+  SiSwagger,
+  SiMui,
+  SiGithub,
+  SiCircleci,
+  SiCss,
 } from 'react-icons/si';
+import {
+  FaAws,
+  FaUniversalAccess,
+  FaGlobe,
+  FaDatabase,
+  FaServer,
+} from 'react-icons/fa';
+import { FaCodeBranch } from 'react-icons/fa6';
 import type { IconType } from 'react-icons';
 import type { Experience } from '@/types';
 
@@ -46,6 +62,20 @@ const TECH_ICONS: Record<string, IconType> = {
   php: SiPhp,
   mysql: SiMysql,
   jquery: SiJquery,
+  cursor: SiCursor,
+  grafana: SiGrafana,
+  googlecloud: SiGooglecloud,
+  swagger: SiSwagger,
+  mui: SiMui,
+  github: SiGithub,
+  circleci: SiCircleci,
+  css: SiCss,
+  aws: FaAws,
+  i18n: FaGlobe,
+  mssql: FaDatabase,
+  complus: FaServer,
+  a11y: FaUniversalAccess,
+  tortoise: FaCodeBranch,
 };
 
 const TECH_LABELS: Record<string, string> = {
@@ -65,6 +95,20 @@ const TECH_LABELS: Record<string, string> = {
   php: 'PHP',
   mysql: 'MySQL',
   jquery: 'jQuery',
+  cursor: 'Cursor',
+  grafana: 'Grafana',
+  googlecloud: 'Google Cloud',
+  swagger: 'Swagger',
+  mui: 'Material UI',
+  github: 'GitHub',
+  circleci: 'CircleCI',
+  i18n: 'i18n',
+  css: 'CSS',
+  aws: 'AWS',
+  mssql: 'Microsoft SQL',
+  a11y: 'A11y',
+  complus: 'COM+',
+  tortoise: 'TortoiseSVN',
 };
 
 function TechIcon({ slug }: { slug: string }) {
