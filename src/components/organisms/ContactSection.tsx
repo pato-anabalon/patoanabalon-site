@@ -360,11 +360,15 @@ export function ContactSection() {
     setFormState('sending')
 
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
+      if (!res.ok) {
+        setFormState('error')
+        return
+      }
       setFormState('success')
     } catch {
       setFormState('error')
