@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, JetBrains_Mono, Space_Grotesk } from 'next/font/google'
 import { hasLocale, NextIntlClientProvider } from 'next-intl'
-import { getMessages, setRequestLocale } from 'next-intl/server'
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
@@ -29,11 +29,7 @@ const spaceGrotesk = Space_Grotesk({
 
 const SITE_URL = 'https://patoanabalon.dev'
 
-const TITLE = 'Patricio "Pato" Anabalon — Senior Software Engineer'
-const DESCRIPTION =
-  'Senior Software Engineer with 18+ years of experience. Next.js, React, TypeScript, Node.js and .NET C#. Based in Santiago, aiming for Auckland, NZ.'
-
-const PERSON_JSON_LD = {
+const buildPersonJsonLd = (description: string) => ({
   '@context': 'https://schema.org',
   '@type': 'Person',
   '@id': `${SITE_URL}/#person`,
@@ -42,7 +38,7 @@ const PERSON_JSON_LD = {
   url: SITE_URL,
   image: `${SITE_URL}/images/about-me/me.jpeg`,
   jobTitle: 'Senior Software Engineer',
-  description: DESCRIPTION,
+  description,
   knowsAbout: [
     'Next.js',
     'React',
@@ -63,7 +59,7 @@ const PERSON_JSON_LD = {
     'https://github.com/pato-anabalon',
     'https://x.com/pato_anabalon',
   ],
-}
+})
 
 export const viewport: Viewport = {
   themeColor: '#0F172A',
@@ -79,11 +75,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   const path = `/${locale}`
+  const t = await getTranslations({ locale, namespace: 'meta' })
+  const title = t('title')
+  const description = t('description')
 
   return {
     metadataBase: new URL(SITE_URL),
-    title: TITLE,
-    description: DESCRIPTION,
+    title,
+    description,
     keywords: [
       'Pato Anabalon',
       'Patricio Anabalon',
@@ -108,8 +107,8 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: TITLE,
-      description: DESCRIPTION,
+      title,
+      description,
       type: 'website',
       url: path,
       siteName: 'Pato Anabalon',
@@ -117,8 +116,8 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: TITLE,
-      description: DESCRIPTION,
+      title,
+      description,
       creator: '@pato_anabalon',
     },
   }
@@ -141,6 +140,8 @@ export default async function LocaleLayout({
   setRequestLocale(locale)
 
   const messages = await getMessages({ locale })
+  const t = await getTranslations({ locale, namespace: 'meta' })
+  const personJsonLd = buildPersonJsonLd(t('description'))
 
   return (
     <html
@@ -150,7 +151,7 @@ export default async function LocaleLayout({
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <NextIntlClientProvider messages={messages}>
           {children}
