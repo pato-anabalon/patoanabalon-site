@@ -2,7 +2,7 @@
 
 Personal portfolio site for **Pato Anabalon** — Senior Software Engineer, ~18 years shipping software across banking, real estate and aviation. Currently at LATAM Airlines, aiming for Auckland, New Zealand.
 
-Live: [patoanabalon.dev](https://patoanabalon.dev) *(coming soon)*
+Live: [patoanabalon.dev](https://patoanabalon.dev)
 
 ---
 
@@ -65,6 +65,19 @@ Available scripts:
 
 ---
 
+## Environment variables
+
+The site runs without any env vars in local dev — GA4 and the contact form gracefully degrade (analytics skips, contact form returns 500 with a clear log). For production these are needed:
+
+| Variable | Scope | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_GA_MEASUREMENT_ID` | client | GA4 Measurement ID (`G-XXXXXXXXXX`). Without it, `<GoogleAnalytics />` renders null and only Vercel Analytics captures events. |
+| `RESEND_API_KEY` | server | Powers `/api/contact` via [Resend](https://resend.com). Without it the endpoint returns 500. The domain `patoanabalon.dev` is already verified in Resend (DKIM + SPF + DMARC). |
+
+Both are set in Vercel Production. Pull them locally with `vercel env pull` if you need to test the full flow.
+
+---
+
 ## Adding content
 
 **A new photo to Off-Screen bento:**
@@ -87,9 +100,9 @@ Every user-facing string lives under a namespaced key in `messages/en.json`. Mir
 
 ## Deployment
 
-Deployed on **Vercel** — every push to `main` builds and ships.
+Deployed on **Vercel** — every push to `master` builds and ships.
 
-Domain `patoanabalon.dev` will be pointed at the Vercel deployment once the DNS is set up.
+The canonical host is the apex `patoanabalon.dev`; `www.patoanabalon.dev` and the default `patoanabalon-site.vercel.app` alias both 308-redirect to the apex to avoid duplicate indexing. DNS lives at Namecheap.
 
 ---
 
