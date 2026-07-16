@@ -65,46 +65,50 @@
         "role": "Senior Front End Developer",
         "period": "Mar 2024 – Presente",
         "description": [
-          "Desarrollé componentes UI responsivos y accesibles para productos Upgrade de cabina y Agrupación dinámica de ancillaries en los flujos de selección de vuelos, tarifas y asientos de LATAM.com",
-          "Diseñé y ejecuté experimentos A/B en producción con Google Optimize y ABSmartly, mejorando la conversión de compra.",
-          "Participé del líderazgo del cluster Engage & Booking y automaticé procesos internos y reportería."
+          "Desarrollé y mantuve los flujos de selección de tarifas y asientos en las plataformas de e-commerce de LATAM, asegurando rendimiento y confiabilidad bajo el tráfico de temporada alta.",
+          "Diseñé y lancé un experimento full-on de Premium Economy en ABSmartly que elevó las compras de tickets de cabina premium en +42.78% (n=146K, 12 semanas, IC 95% +10.9% a +62.3%) — variante liberada a producción.",
+          "Aumenté la cobertura de tests del 82% al 97% en los artefactos críticos de selección de tarifas y asientos (web + BFF), reduciendo regresiones en los flujos de mayor tráfico del checkout.",
+          "Participé del liderazgo del cluster Engage & Booking y automaticé procesos internos y reportería.",
+          "Reconocido como Líder de Servicio LATAM 2025 por contribución transversal entre equipos."
         ]
       },
       "globant": {
         "role": "Senior Software Engineer",
         "period": "Feb 2021 – Feb 2024",
         "description": [
-          "Diseñé e implementé soluciones web responsivas con el framework Svelte.",
-          "Entregué componentes UI enfocados en rendimiento, reduciendo tiempos de carga y mejorando la UX.",
-          "Construí módulos de ventas y servicios auxiliares con React.js, Next.js, Jest, RTL, Storybook y WebdriverIO.",
-          "Participé del programa de mentoring de Globant, ayudando a desarrolladores semi senior a crecer profesionalmente."
+          "Construí módulos de cara al cliente de la plataforma de booking de LATAM (React, Next.js, Node.js) en una arquitectura de microservicios que sirve a millones de usuarios diarios.",
+          "Entregué componentes UI enfocados en rendimiento en Svelte y React, reduciendo tiempos de carga y mejorando la UX en flujos clave de conversión.",
+          "Mentoricé a 3 ingenieros semi senior durante 8 meses — 2 promovidos a Senior — mediante pair-programming, code reviews y guía de desarrollo profesional.",
+          "Premiado con 'Constantly Innovate' 2022 — reconocimiento anual votado entre pares a nivel compañía por innovación constante en toda la organización."
         ]
       },
       "amicar": {
         "role": "Software Development Manager",
         "period": "Abr 2019 – Dic 2020",
         "description": [
-          "Lideré la transformación digital supervisando equipos de frontend, backend y Salesforce bajo Scrum.",
-          "Participé en el Diseño e implementación de la nueva arquitectura cloud altamente escalable en GCP.",
-          "Impulsé el alineamiento entre stakeholders de negocio y equipos técnicos durante la digitalización de la plataforma."
+          "Lideré un equipo cross-funcional de 10 personas (frontend, backend, Salesforce) durante la transformación digital de Amicar, entregando la plataforma completa de ventas digitales en 12 meses.",
+          "Reconstruí desde cero la API del motor de cálculo de créditos, reduciendo el tiempo de entrega de los datos financieros de un préstamo de 8s a menos de 800ms — una mejora de rendimiento de 10×.",
+          "Arquitecté y lideré la migración de la plataforma desde ASP 2.0 / COM+ / SQL Server a React.js / PostgreSQL / MongoDB, mejorando el rendimiento general en un 45% y habilitando integraciones nativas con Salesforce y 6 instituciones financieras."
         ]
       },
       "mink": {
         "role": "Co-Founder & CTO",
         "period": "Sep 2018 – Dic 2020",
         "description": [
+          "En paralelo con Amicar.",
           "Co-fundé y lideré la estrategia técnica de una startup proptech enfocada en inversión inmobiliaria.",
           "Desarrollé la plataforma de inversión inmobiliaria \"Webi\" como desarrollador full-stack.",
           "Representé a la startup en el programa de aceleración Start-Up Chile G19."
         ]
       },
       "indexa": {
-        "role": "Developer Analyst & Technical Leader",
+        "role": "Junior Developer -> Technical Leader",
         "period": "Mar 2007 – Dic 2017",
         "description": [
-          "Lideré el desarrollo y la dirección técnica de una plataforma de créditos automotrices para Scotiabank, Banco BICE y Amicar.",
-          "Actué como Technical Lead guiando decisiones arquitectónicas y mentorizando desarrolladores junior.",
-          "Diseñé, desarrollé y mantuve sistemas de gestión de créditos automotrices durante más de 10 años."
+          "Optimicé el motor de cálculo de créditos automotrices, reduciendo los tiempos de respuesta en un 50% en todas las integraciones aguas abajo.",
+          "Construí el primer design system de la plataforma, estandarizando componentes UI y acelerando la entrega en nuevas integraciones con clientes.",
+          "Actué como punto de contacto técnico principal para 5 clientes enterprise — Scotiabank, BICE Crediautos, Tanner, Amicar Chile y Amicar Perú — alineando la entrega con los SLAs y requisitos de integración de cada cliente.",
+          "Actué como Technical Lead guiando decisiones arquitectónicas y mentorizando desarrolladores junior."
         ]
       }
     },
@@ -126,7 +130,7 @@
       },
       "yearsCoding": {
         "big": "18+",
-        "year": "Años",
+        "year": "2007 → 2026",
         "text": "años de experiencia entregando código de calidad en producción en distintas industrias y tecnologías"
       }
     },

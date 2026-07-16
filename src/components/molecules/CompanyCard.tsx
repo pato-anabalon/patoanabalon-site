@@ -24,15 +24,9 @@ import {
   SiMui,
   SiGithub,
   SiCircleci,
-  SiCss,
+  SiCss
 } from 'react-icons/si';
-import {
-  FaAws,
-  FaUniversalAccess,
-  FaGlobe,
-  FaDatabase,
-  FaServer,
-} from 'react-icons/fa';
+import { FaAws, FaUniversalAccess, FaGlobe, FaDatabase, FaServer } from 'react-icons/fa';
 import { FaCodeBranch } from 'react-icons/fa6';
 import type { IconType } from 'react-icons';
 import type { Experience } from '@/types';
@@ -75,7 +69,7 @@ const TECH_ICONS: Record<string, IconType> = {
   mssql: FaDatabase,
   complus: FaServer,
   a11y: FaUniversalAccess,
-  tortoise: FaCodeBranch,
+  tortoise: FaCodeBranch
 };
 
 const TECH_LABELS: Record<string, string> = {
@@ -108,7 +102,7 @@ const TECH_LABELS: Record<string, string> = {
   mssql: 'Microsoft SQL',
   a11y: 'A11y',
   complus: 'COM+',
-  tortoise: 'TortoiseSVN',
+  tortoise: 'TortoiseSVN'
 };
 
 function TechIcon({ slug }: { slug: string }) {
@@ -132,7 +126,7 @@ export function CompanyCard({ experience, logoSrc, logoSmallSrc, isPresent, nowL
   return (
     <article
       data-testid={`molecule-company-card-${experience.id}`}
-      className="relative flex-shrink-0 w-[320px] sm:w-[420px] h-[476px] sm:h-[520px] rounded-3xl border border-[rgba(16,185,129,0.12)] bg-[var(--color-bg-secondary)] p-6 sm:p-8 flex flex-col shadow-[0_25px_60px_-20px_rgba(0,0,0,0.7)] overflow-hidden"
+      className="relative flex-shrink-0 w-[320px] sm:w-[480px] h-[530px] sm:h-[575px] rounded-3xl border border-[rgba(16,185,129,0.12)] bg-[var(--color-bg-secondary)] p-6 sm:p-8 flex flex-col shadow-[0_25px_60px_-20px_rgba(0,0,0,0.7)] overflow-hidden"
     >
       {/* Mobile watermark — small logo variant */}
       <div
@@ -140,13 +134,7 @@ export function CompanyCard({ experience, logoSrc, logoSmallSrc, isPresent, nowL
         className="pointer-events-none absolute right-0 bottom-6 h-[100px] w-[260px] sm:hidden opacity-50"
         style={{ mixBlendMode: 'luminosity' }}
       >
-        <Image
-          src={logoSmallSrc}
-          alt=""
-          fill
-          sizes="260px"
-          className="object-contain object-right"
-        />
+        <Image src={logoSmallSrc} alt="" fill sizes="260px" className="object-contain object-right" />
       </div>
 
       {/* Desktop watermark — small logo variant */}
@@ -156,13 +144,7 @@ export function CompanyCard({ experience, logoSrc, logoSmallSrc, isPresent, nowL
         className="pointer-events-none hidden sm:block absolute right-4 bottom-8 h-[140px] w-[130px] opacity-50"
         style={{ mixBlendMode: 'luminosity' }}
       >
-        <Image
-          src={logoSmallSrc}
-          alt=""
-          fill
-          sizes="130px"
-          className="object-contain object-right"
-        />
+        <Image src={logoSmallSrc} alt="" fill sizes="130px" className="object-contain object-right" />
       </div>
 
       {/* Present badge (LATAM only) */}
@@ -186,15 +168,13 @@ export function CompanyCard({ experience, logoSrc, logoSmallSrc, isPresent, nowL
         </h3>
 
         {/* Role */}
-        <p className="text-sm text-[var(--color-text-muted)] mt-1 mb-4 sm:mb-6">
-          {experience.role}
-        </p>
+        <p className="text-sm text-[var(--color-text-muted)] mt-1 mb-2 sm:mb-6">{experience.role}</p>
 
         {/* Divider */}
-        <div className="h-px w-12 bg-[var(--color-accent)] mb-4 sm:mb-6" />
+        <div className="h-px w-12 bg-[var(--color-accent)] mb-2 sm:mb-6" />
 
         {/* Achievements */}
-        <ul className="space-y-2.5 sm:space-y-3 overflow-hidden">
+        <ul className="space-y-2 sm:space-y-3 overflow-hidden">
           {experience.description.map((item, i) => (
             <li
               key={i}

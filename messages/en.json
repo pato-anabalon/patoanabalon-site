@@ -65,34 +65,37 @@
         "role": "Senior Front End Developer",
         "period": "Mar 2024 – Present",
         "description": [
-          "Developed responsive and accessible UI components for Cabin Upgrade products and Dynamic Bundle of ancillaries in the flight, fares, and seat selection flows across LATAM's e-commerce platforms.",
-          "Designed and executed A/B experiments in production environment using Google Optimize and ABSmartly, improving purchase conversion.",
-          "Participated in the leadership of the Engage & Booking cluster and automated internal processes and reporting."
+          "Developed and maintained fare-family and seat-selection workflows across LATAM's e-commerce platforms, ensuring performance and reliability under peak-season traffic.",
+          "Designed and shipped a Premium Economy full-on experiment on ABSmartly that lifted premium-cabin ticket purchases by +42.78% (n=146K, 12 weeks, 95% CI +10.9% to +62.3%) — variant rolled out to production.",
+          "Raised test coverage from 82% to 97% on fare-selection and seat-selection critical artefacts (web + BFF), reducing regressions on the checkout's highest-traffic flows.",
+          "Participated in the leadership of the Engage & Booking cluster and automated internal processes and reporting.",
+          "Recognised as LATAM Service Leader 2025 for cross-team contribution."
         ]
       },
       "globant": {
         "role": "Senior Software Engineer",
         "period": "Feb 2021 – Feb 2024",
         "description": [
-          "Designed and implemented responsive web solutions using Svelte framework.",
-          "Delivered performance-focused UI components reducing load times and improving UX.",
-          "Built sales and ancillary services modules using React.js, Next.js, Jest, RTL, Storybook and WebdriverIO.",
-          "Participated in Globant's mentoring program, helping semi-senior developers to grow professionally."
+          "Built customer-facing modules of LATAM's booking platform (React, Next.js, Node.js) in a micro-services architecture serving millions of daily users.",
+          "Delivered performance-focused UI components in Svelte and React, reducing load times and improving UX on key conversion flows.",
+          "Mentored 3 semi-senior engineers over 8 months — 2 promoted to Senior — through pair-programming, code reviews and career-development guidance.",
+          "Awarded 'Constantly Innovate' 2022 — company-wide peer-voted recognition for consistent innovation across the organisation."
         ]
       },
       "amicar": {
         "role": "Software Development Manager",
         "period": "Apr 2019 – Dec 2020",
         "description": [
-          "Led digital transformation overseeing frontend, backend, and Salesforce teams via Scrum.",
-          "Designed and implemented highly scalable cloud architecture on AWS.",
-          "Drove alignment between business stakeholders and technical teams during platform digitalisation."
+          "Led a 10-person cross-functional team (frontend, backend, Salesforce) through Amicar's digital transformation, delivering the full digital-sales platform in 12 months.",
+          "Rebuilt the credit-calculation engine API from the ground up, cutting the delivery time of a loan's financial data from 8s to under 800ms — a 10× performance gain.",
+          "Architected and led the platform migration from ASP 2.0 / COM+ / SQL Server to React.js / PostgreSQL / MongoDB, improving overall performance by 45% and enabling native integrations with Salesforce and 6 financial institutions."
         ]
       },
       "mink": {
         "role": "Co-Founder & CTO",
         "period": "Sep 2018 – Dec 2020",
         "description": [
+          "In parallel with Amicar.",
           "Co-founded and led the technical strategy of a proptech startup focused on real estate investment.",
           "Developed the \"Webi\" real estate investment platform as full-stack developer.",
           "Represented the startup in Start-Up Chile G19 acceleration programme."
@@ -102,9 +105,10 @@
         "role": "Developer Analyst & Technical Leader",
         "period": "Mar 2007 – Dec 2017",
         "description": [
-          "Led the development and technical direction of an automotive loan platform for Scotiabank, Bice Bank, and Amicar.",
-          "Acted as Technical Lead guiding architectural decisions and mentoring junior developers.",
-          "Designed, developed, and maintained automotive credit management systems over 10 years."
+          "Optimised the automotive credit-calculation engine, reducing response times by 50% across all downstream integrations.",
+          "Built the platform's first design system, standardising UI components and accelerating delivery across new client integrations.",
+          "Acted as primary technical point of contact for 5 enterprise clients — Scotiabank, BICE Crediautos, Tanner, Amicar Chile and Amicar Perú — aligning delivery with each client's SLAs and integration requirements.",
+          "Acted as Technical Lead guiding architectural decisions and mentoring junior developers."
         ]
       }
     },
@@ -126,7 +130,7 @@
       },
       "yearsCoding": {
         "big": "18+",
-        "year": "Years",
+        "year": "2007 → 2026",
         "text": "Years of experience shipping quality production code across various industries and technologies"
       }
     },
