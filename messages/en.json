@@ -41,7 +41,7 @@
   "about": {
     "heading": "About Me",
     "bio1": "It was 1996. I was 12 when I met my first computer — and fell for it instantly. Not long after, I broke it trying to make it faster. Almost three decades on, that same obsession still drives me: making complicated things feel effortless. Today it takes the shape of an 18-year career as a Senior Software Engineer across banking, real estate, and aviation.",
-    "bio2": "Now I'm at LATAM Airlines, working on one of Latin America's largest e-commerce platforms. In an IT organisation of ~400 engineers I'm the person teammates come to when the code needs to be right — not just shipped. In 2025 I received LATAM's Service Leaders award, which quietly confirms what I've always believed: you can lead without giving up the keyboard.",
+    "bio2": "Now I'm at LATAM Airlines, working on one of Latin America's largest e-commerce platforms. In an IT organisation of ~400 engineers I'm the person teammates come to when the code needs to be right — not just shipped. In 2026 I received LATAM's Service Leaders award, which quietly confirms what I've always believed: you can lead without giving up the keyboard.",
     "bio3": "What's next? Ideally Auckland — I spent late 2025 there studying English at NZLC and fell completely for the city, its people, and its culture. I'm looking for a company willing to sponsor a work visa (my immigration advisor makes that part painless). Conversations with teams elsewhere are also welcome. If you value craft as much as outcomes, let's talk.",
     "yearsLabel": "Years of experience",
     "companiesLabel": "Companies",
@@ -76,7 +76,7 @@
         "role": "Senior Software Engineer",
         "period": "Feb 2021 – Feb 2024",
         "description": [
-          "Built customer-facing modules of LATAM's booking platform (React, Next.js, Node.js) in a micro-services architecture serving millions of daily users.",
+          "Built customer-facing modules of LATAM's booking platform (React, Next.js, Node.js) in a micro-services architecture serving ~330K daily users.",
           "Delivered performance-focused UI components in Svelte and React, reducing load times and improving UX on key conversion flows.",
           "Mentored 3 semi-senior engineers over 8 months — 2 promoted to Senior — through pair-programming, code reviews and career-development guidance.",
           "Awarded 'Constantly Innovate' 2022 — company-wide peer-voted recognition for consistent innovation across the organisation."
