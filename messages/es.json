@@ -69,7 +69,7 @@
           "Diseñó y lanzó un experimento full-on de Premium Economy en ABSmartly que elevó las compras de tickets de cabina premium en +42.78% (n=146K, 12 semanas, IC 95% +10.9% a +62.3%) — variante liberada a producción.",
           "Aumentó la cobertura de tests del 82% al 97% en los artefactos críticos de selección de tarifas y asientos (web + BFF), reduciendo regresiones en los flujos de mayor tráfico del checkout.",
           "Participó del liderazgo del cluster Engage & Booking y automatizó procesos internos y reportería.",
-          "Reconocido como Líder de Servicio LATAM 2025."
+          "Reconocido como Líder de Servicio LATAM."
         ]
       },
       "globant": {
@@ -115,7 +115,7 @@
     "milestones": {
       "latamAward": {
         "big": "Líder de Servicio",
-        "year": "2025",
+        "year": "2026",
         "text": "Líder de Servicio LATAM — reconocido por representar los valores de Seguridad, Sostenibilidad y J.E.T.S. (Justo, Empático, Transparente y Simple)"
       },
       "globantAward": {
